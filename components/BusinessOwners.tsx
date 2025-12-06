@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Section from "./Section";
 
 interface ProblemCardProps {
@@ -5,8 +6,10 @@ interface ProblemCardProps {
   categoryColor: string;
   headline: string;
   description: string;
-  icon: string;
+  imageSrc: string;
+  imageAlt: string;
   bgColor: string;
+  topImg?: boolean;
 }
 
 function ProblemCard({
@@ -14,26 +17,58 @@ function ProblemCard({
   categoryColor,
   headline,
   description,
-  icon,
+  imageSrc,
+  imageAlt,
   bgColor,
+  topImg = false,
 }: ProblemCardProps) {
   return (
-    <div className="rounded-lg shadow-md">
-      <div
-        className={`flex justify-center items-center rounded-t-lg`}
-        style={{ backgroundColor: bgColor }}
-      >
-        <div className="text-6xl">{icon}</div>
-      </div>
-      <div className="mb-4 bg-white p-6 rounded-b-lg">
+    <div
+      className={`${
+        topImg
+          ? "rounded-lg"
+          : "rounded-lg md:rounded-l-lg md:flex flex-col md:flex-row"
+      } shadow-md overflow-hidden`}
+    >
+      {topImg ? (
+        <div
+          className={`flex justify-center items-center rounded-t-lg p-4 md:p-8`}
+          style={{ backgroundColor: bgColor }}
+        >
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={317}
+            height={215}
+            className="object-cover w-full max-w-full md:max-w-[317px] h-auto md:h-[216px]"
+          />
+        </div>
+      ) : null}
+      <div className="bg-white p-4 md:p-6 flex-1">
         <p className={`text-sm font-bold uppercase ${categoryColor} mb-3`}>
           {category}
         </p>
-        <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
+        <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-3">
           {headline}
         </h3>
-        <p className="text-gray-600 leading-relaxed">{description}</p>
+        <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+          {description}
+        </p>
       </div>
+      {!topImg ? (
+        <div
+          className={`flex justify-center items-center p-4 md:p-8 md:rounded-r-lg shrink-0`}
+          style={{ backgroundColor: bgColor }}
+        >
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={317}
+            height={215}
+            className="object-cover w-full max-w-full md:max-w-[317px] h-auto md:h-[216px]"
+          />
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -54,14 +89,15 @@ export default function BusinessOwners() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          <div className="col-span-2">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
+          <div className="col-span-1 md:col-span-2">
             <ProblemCard
               category="TEAM & HR"
               categoryColor="text-pink-600"
               headline="Business grows only when people grow."
               description="You can't scale if everything depends on you. We help you build simple systems so your team knows what to do, how to do it, and why it matters."
-              icon="👥"
+              imageSrc="/members_group.png"
+              imageAlt="Team members group"
               bgColor="#E0B0FF"
             />
           </div>
@@ -71,32 +107,40 @@ export default function BusinessOwners() {
             categoryColor="text-pink-600"
             headline="Clear thinking saves more money than good coding."
             description="Most startups don't fall in development; they fall in definition. We sit with you as a Business Analyst, turning your idea into a clear, buildable plan."
-            icon="💡"
+            imageSrc="/person_with_lap.png"
+            imageAlt="Person with laptop"
             bgColor="#FFC0CB"
+            topImg={true}
           />
           <ProblemCard
             category="LOANS & CREDIT"
             categoryColor="text-green-600"
             headline="Good businesses shouldn't be punished by paperwork."
             description="Banks don't see your hard work, they see your files. We prepare your numbers, documents and credit profile so they finally see the real strength of your business."
-            icon="🔍"
+            imageSrc="/magnify_glass.png"
+            imageAlt="Magnifying glass"
             bgColor="#C0FFD3"
+            topImg={true}
           />
           <ProblemCard
             category="ONLINE VISIBILITY"
             categoryColor="text-blue-600"
             headline="Your business should be discovered, not guessed."
             description="You've worked hard to build a good shop. We make sure people can actually find it when they search 'near me' on Google. So the calls, visits and orders come to you first."
-            icon="🌐"
+            imageSrc="/google_search.png"
+            imageAlt="Google search"
             bgColor="#C0ECFF"
+            topImg={true}
           />
           <ProblemCard
             category="PROJECTS"
             categoryColor="text-orange-600"
             headline="Good work deserves a clean finish, not a fight."
             description="You deliver quality construction, but loose agreements and missing records invite last-minute disputes. We give you simple contracts and tracking sheets that protect both sides."
-            icon="🤝"
+            imageSrc="/graph.png"
+            imageAlt="Project graph"
             bgColor="#FFE5C0"
+            topImg={true}
           />
         </div>
       </div>

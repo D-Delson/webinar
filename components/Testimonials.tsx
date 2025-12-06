@@ -66,7 +66,7 @@ export default function Testimonials() {
             (And Why We&apos;re Different)
           </p>
         </div>
-        <div className="grid grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           <div className="flex flex-col gap-6 lg:gap-8">
             {avatarColors?.slice(0, 2).map((color, index) => (
               <TestimonialCard key={index} avatarColor={color} />

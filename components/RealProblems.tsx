@@ -24,16 +24,16 @@ export default function RealProblems() {
   return (
     <Section className="bg-gray-50">
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* Left Column */}
           <div>
             <p className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-4">
               THE DIFFERENCE
             </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-3">
               We Don&apos;t Sell Theory.
             </h2>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-500 mb-6">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-500 mb-6">
               We Solve <span className="text-blue-600">Real Problems.</span>
             </h2>
             <p className="text-base md:text-lg text-gray-700 leading-relaxed">

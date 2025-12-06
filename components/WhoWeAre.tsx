@@ -36,7 +36,7 @@ export default function WhoWeAre() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* Left Column */}
           <div className="space-y-6">
             <div className="space-y-4">
