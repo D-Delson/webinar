@@ -58,7 +58,7 @@ export default function Hero() {
         </div>
 
         {/* Trusted Across Industries Section */}
-        <div className="mt-16">
+        <div className="mt-8">
           <p className="text-xs md:text-[18px] font-medium text-[#94A2B8] uppercase tracking-wider mb-6">
             TRUSTED ACROSS INDUSTRIES
           </p>

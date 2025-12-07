@@ -24,11 +24,10 @@ function ProblemCard({
 }: ProblemCardProps) {
   return (
     <div
-      className={`${
-        topImg
-          ? "rounded-lg"
-          : "rounded-lg md:rounded-l-lg md:flex flex-col md:flex-row"
-      } shadow-md overflow-hidden`}
+      className={`${topImg
+        ? "rounded-lg"
+        : "rounded-lg md:rounded-l-lg md:flex flex-col md:flex-row"
+        } shadow-md overflow-hidden`}
     >
       {topImg ? (
         <div
@@ -57,7 +56,7 @@ function ProblemCard({
       </div>
       {!topImg ? (
         <div
-          className={`flex justify-center items-center p-4 md:p-8 md:rounded-r-lg shrink-0`}
+          className={`flex justify-center items-center p-4 md:p-8 md:rounded-r-lg shrink-0 flex-1`}
           style={{ backgroundColor: bgColor }}
         >
           <Image
@@ -78,11 +77,22 @@ export default function BusinessOwners() {
     <Section className="bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            For Business Owners Who Refuse To{" "}
-            <span className="text-blue-600">Stay Small</span>.
-          </h2>
-          <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto">
+          <div className="mb-4 text-center">
+            <h2 className="text-[32px] md:text-[40px] lg:text-[44px] leading-[42px] md:leading-[50px] lg:leading-[58px] font-semibold text-[#292F33] tracking-[-0.16px] capitalize">
+              For Business Owners
+            </h2>
+
+            <h2 className="mt-2 text-[32px] md:text-[40px] lg:text-[44px] leading-[42px] md:leading-[50px] lg:leading-[58px] tracking-[-0.16px] capitalize">
+              <span className="font-semibold italic text-[#94A2B8]">
+                Who Refuse To{" "}
+              </span>
+              <span className="font-bold italic text-[#2663EB]">
+                stay small.
+              </span>
+            </h2>
+          </div>
+
+          <p className="text-base md:text-lg text-[#485468] max-w-3xl mx-auto md:leading-[36px]">
             You didn&apos;t start a business to chase staff, fight with banks,
             or lose customers to competitors. We fix the things that silently
             hold you back.
@@ -98,7 +108,7 @@ export default function BusinessOwners() {
               description="You can't scale if everything depends on you. We help you build simple systems so your team knows what to do, how to do it, and why it matters."
               imageSrc="/members_group.png"
               imageAlt="Team members group"
-              bgColor="#E0B0FF"
+              bgColor="#F0EAFE"
             />
           </div>
 
@@ -109,7 +119,7 @@ export default function BusinessOwners() {
             description="Most startups don't fall in development; they fall in definition. We sit with you as a Business Analyst, turning your idea into a clear, buildable plan."
             imageSrc="/person_with_lap.png"
             imageAlt="Person with laptop"
-            bgColor="#FFC0CB"
+            bgColor="#FDF3F8"
             topImg={true}
           />
           <ProblemCard
@@ -119,7 +129,18 @@ export default function BusinessOwners() {
             description="Banks don't see your hard work, they see your files. We prepare your numbers, documents and credit profile so they finally see the real strength of your business."
             imageSrc="/magnify_glass.png"
             imageAlt="Magnifying glass"
-            bgColor="#C0FFD3"
+            bgColor="#EAFEF6"
+            topImg={true}
+          />
+
+          <ProblemCard
+            category="PROJECTS"
+            categoryColor="text-orange-600"
+            headline="Good work deserves a clean finish, not a fight."
+            description="You deliver quality construction, but loose agreements and missing records invite last-minute disputes. We give you simple contracts and tracking sheets that protect both sides."
+            imageSrc="/graph.png"
+            imageAlt="Project graph"
+            bgColor="#FFFBEA"
             topImg={true}
           />
           <ProblemCard
@@ -129,17 +150,7 @@ export default function BusinessOwners() {
             description="You've worked hard to build a good shop. We make sure people can actually find it when they search 'near me' on Google. So the calls, visits and orders come to you first."
             imageSrc="/google_search.png"
             imageAlt="Google search"
-            bgColor="#C0ECFF"
-            topImg={true}
-          />
-          <ProblemCard
-            category="PROJECTS"
-            categoryColor="text-orange-600"
-            headline="Good work deserves a clean finish, not a fight."
-            description="You deliver quality construction, but loose agreements and missing records invite last-minute disputes. We give you simple contracts and tracking sheets that protect both sides."
-            imageSrc="/graph.png"
-            imageAlt="Project graph"
-            bgColor="#FFE5C0"
+            bgColor="#F0F6FF"
             topImg={true}
           />
         </div>

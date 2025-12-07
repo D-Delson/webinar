@@ -56,7 +56,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <Section className="">
+    <Section className="bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-center">
           <h2 className="text-3xl md:text-3xl font-bold text-gray-900 mb-2">
