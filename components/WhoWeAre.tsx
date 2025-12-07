@@ -27,18 +27,20 @@ export default function WhoWeAre() {
   return (
     <Section id="about" className="bg-gray-50">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-            Who We Are
-          </h2>
-          <p className="text-xl md:text-2xl text-gray-700 italic">
-            (And Why We&apos;re Different)
-          </p>
-        </div>
+
 
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* Left Column */}
           <div className="space-y-6">
+
+            <div className="mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                Who We Are
+              </h2>
+              <p className="font-semibold text-[38px] text-[#94A2B8] italic leading-[70px] tracking-[-0.16px] align-middle capitalize">
+                (And Why We&apos;re Different)</p>
+            </div>
+
             <div className="space-y-4">
               <p className="text-gray-700 leading-relaxed text-lg">
                 We&apos;re{" "}
@@ -96,7 +98,8 @@ export default function WhoWeAre() {
           </div>
 
           {/* Right Column - Feature Cards */}
-          <div className="grid gap-6">
+          <div className="grid gap-6 space-y-2">
+            <div></div>
             <FeatureCard
               icon="🏢"
               iconBg="bg-blue-100"

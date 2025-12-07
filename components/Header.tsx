@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <header className="bg-white shadow-md border-b border-gray-300 sticky top-0 z-50">
       <Container>
-        <nav className="flex items-center justify-center py-4 md:py-[27px] relative">
+        <nav className="flex items-center justify-center py-2 md:py-[20px] relative">
           <div className="flex-1"></div>
           <div className="hidden md:flex items-center space-x-16">
             <a
