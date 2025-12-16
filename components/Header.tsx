@@ -1,6 +1,15 @@
+"use client";
+
+import { useState } from "react";
+
+import AppModal from "./common/AppModel";
 import Container from "./Container";
+import MakePaymentForm from "./payment/MakePayment";
 
 export default function Header() {
+
+  const [open, setOpen] = useState(false);
+
   return (
     <header className="bg-white shadow-md border-b border-gray-300 sticky top-0 z-50">
       <Container>
@@ -27,9 +36,23 @@ export default function Header() {
             </a>
           </div>
           <div className="flex-1 flex justify-end">
-            <button className="bg-[#0E172A] text-white px-4 md:px-6 py-2 rounded-full hover:bg-black/80 cursor-pointer transition-colors font-medium text-sm md:text-base">
+            <button className="bg-[#0E172A] text-white px-4 md:px-6 py-2 rounded-full hover:bg-black/80 cursor-pointer transition-colors font-medium text-sm md:text-base"
+              onClick={() => { setOpen(true) }}
+            >
               Book Consultation
             </button>
+
+            <AppModal
+              open={open}
+              onClose={() => setOpen(false)}
+              title="Book 15-min Call — ₹499"
+            >
+              <MakePaymentForm
+                amount={499}
+                type={"call"}
+                onSuccess={() => setOpen(false)}
+              />
+            </AppModal>
           </div>
         </nav>
       </Container>

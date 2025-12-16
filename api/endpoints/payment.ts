@@ -1,0 +1,1 @@
+export const MAKE_PAYMENT_API = "api/payment/make-payment/";
