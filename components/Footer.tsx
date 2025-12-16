@@ -90,7 +90,7 @@ export default function Footer() {
                   Privacy Policy
                 </a> */}
                 <Link
-                  href="legal/privacy-policy"
+                  href="/legal/privacy-policy"
                   className="hover:underline"
                 >
                   Privacy Policy
@@ -98,7 +98,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="legal/terms-and-conditions"
+                  href="/legal/terms-and-conditions"
                   className="hover:underline"
                 >
                   Terms And Conditions
@@ -106,7 +106,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="legal/refund-policy"
+                  href="/legal/refund-policy"
                   className="hover:underline"
                 >
                   Refund Policy
