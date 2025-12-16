@@ -220,7 +220,7 @@ export default function MakePaymentForm({ amount, type, onSuccess }: MakePayment
 
                     const verifyUrl =
                         getHostAPIUrl() +
-                        `/api/payment/verify-payment/${order.receipt}/`;
+                        `api/payment/verify-payment/${order.receipt}/`;
 
                     const verifyPayload = {
                         razorpay_order_id: response.razorpay_order_id,
