@@ -1,6 +1,12 @@
+"use client";
+
+import { useState } from "react";
+import AppModal from "./common/AppModel";
+import MakePaymentForm from "./payment/MakePayment";
 import Section from "./Section";
 
 export default function CTA() {
+  const [open, setOpen] = useState(false);
   return (
     <Section className="bg-gray-50">
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center justify-center">
@@ -18,9 +24,25 @@ export default function CTA() {
           <button className="bg-blue-600 text-white px-8 py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-blue-700 transition-colors shadow-md">
             Start Your Transformation
           </button>
-          <button className="bg-white border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-gray-50 transition-colors">
+          <button className="bg-white border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-gray-50 transition-colors"
+            onClick={() => setOpen(true)}
+          >
             Book 15-min Call at ₹499
           </button>
+
+
+          <AppModal
+            open={open}
+            onClose={() => setOpen(false)}
+            title="Book 15-min Call — ₹499"
+          >
+            <MakePaymentForm
+              amount={499}
+              type={"call"}
+              onSuccess={() => setOpen(false)}
+            />
+          </AppModal>
+
         </div>
         <div className="flex flex-col sm:flex-row items-center border rounded-full w-fit py-2 px-4 justify-center gap-4 text-sm text-gray-500">
           <div className="flex items-center gap-2">

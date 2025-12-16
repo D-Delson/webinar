@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Container from "./Container";
 
 export default function Footer() {
@@ -85,19 +86,31 @@ export default function Footer() {
             <h4 className="text-white font-bold mb-4">Legal</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                {/* <a href="#" className="hover:text-white transition-colors">
                   Privacy Policy
-                </a>
+                </a> */}
+                <Link
+                  href="legal/privacy-policy"
+                  className="hover:underline"
+                >
+                  Privacy Policy
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Terms of Service
-                </a>
+                <Link
+                  href="legal/terms-and-conditions"
+                  className="hover:underline"
+                >
+                  Terms And Conditions
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <Link
+                  href="legal/refund-policy"
+                  className="hover:underline"
+                >
                   Refund Policy
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
