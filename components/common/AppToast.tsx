@@ -2,7 +2,7 @@ import { Toaster } from "react-hot-toast";
 
 const AppToast = () => {
     return (
-        <div>
+        <>
             <Toaster
                 position="bottom-center"
                 containerStyle={{ zIndex: 999999999 }}
@@ -21,7 +21,7 @@ const AppToast = () => {
                     },
                 }}
             />
-        </div>
+        </>
     );
 };
 
