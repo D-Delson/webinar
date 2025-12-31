@@ -1,0 +1,1 @@
+export const SERVICE_PACKAGE_LIST_API = "api/payment/service-package/list/";
