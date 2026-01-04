@@ -5,6 +5,7 @@ import { useState } from "react";
 import AppModal from "./common/AppModel";
 import Container from "./Container";
 import MakePaymentForm from "./payment/MakePayment";
+import { ChooseService } from "./payment/ChooseService";
 
 export default function Header() {
 
@@ -45,13 +46,9 @@ export default function Header() {
             <AppModal
               open={open}
               onClose={() => setOpen(false)}
-              title="Book 15-min Call — ₹499"
+              title="Select the services"
             >
-              <MakePaymentForm
-                amount={499}
-                type={"call"}
-                onSuccess={() => setOpen(false)}
-              />
+              <ChooseService />
             </AppModal>
           </div>
         </nav>
