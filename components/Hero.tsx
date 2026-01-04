@@ -27,7 +27,7 @@ export default function Hero() {
 
         {/* Sub-headline Split */}
         <div className="mb-6 flex flex-col items-center justify-center gap-2 sm:gap-0">
-          <span className="text-4xl md:text-5xl lg:text-[72px] font-bold text-[#94A3B8] italic">
+          <span className="text-4xl md:text-5xl lg:text-[72px] font-bold text-[#94A3B8] italic mb-3">
             Better Operations
           </span>
           <span className="text-4xl md:text-5xl lg:text-[72px] font-bold text-[#2663EB] sm:ml-2">

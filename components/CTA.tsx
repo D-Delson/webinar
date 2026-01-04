@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import AppModal from "./common/AppModel";
-import MakePaymentForm from "./payment/MakePayment";
+import { ChooseService } from "./payment/ChooseService";
 import Section from "./Section";
 
 export default function CTA() {
@@ -21,28 +21,29 @@ export default function CTA() {
           conversation about what you need.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <button className="bg-blue-600 text-white px-8 py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-blue-700 transition-colors shadow-md">
+          <button
+            className="bg-blue-600 text-white px-8 py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-blue-700 transition-colors shadow-md"
+            onClick={() => setOpen(true)}
+          >
             Start Your Transformation
           </button>
-          <button className="bg-white border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-gray-50 transition-colors"
+
+          <button
+            className="bg-white border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-gray-50 transition-colors"
             onClick={() => setOpen(true)}
           >
             Book 15-min Call at ₹499
           </button>
 
 
+
           <AppModal
             open={open}
             onClose={() => setOpen(false)}
-            title="Book 15-min Call — ₹499"
+            title="Select the services"
           >
-            <MakePaymentForm
-              amount={499}
-              type={"call"}
-              onSuccess={() => setOpen(false)}
-            />
+            <ChooseService />
           </AppModal>
-
         </div>
         <div className="flex flex-col sm:flex-row items-center border rounded-full w-fit py-2 px-4 justify-center gap-4 text-sm text-gray-500">
           <div className="flex items-center gap-2">

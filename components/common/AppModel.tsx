@@ -3,6 +3,9 @@
 import { ReactNode, useEffect } from "react";
 import { X } from "lucide-react";
 
+// Track how many modals are open (for scroll lock)
+let openModalsCount = 0;
+
 type AppModalProps = {
   open: boolean;
   onClose: () => void;
@@ -11,6 +14,7 @@ type AppModalProps = {
   contentClassName?: string;
   overlayClassName?: string;
   removeCloseButton?: boolean;
+  zIndex?: number; // for nested modals
 };
 
 export default function AppModal({
@@ -21,47 +25,69 @@ export default function AppModal({
   contentClassName = "",
   overlayClassName = "",
   removeCloseButton = false,
+  zIndex = 50,
 }: AppModalProps) {
-  // Escape key handling
   useEffect(() => {
     if (!open) return;
 
+    // Increase modal counter and lock scroll if first modal
+    openModalsCount++;
+    if (openModalsCount === 1) {
+      document.body.style.overflow = "hidden";
+    }
+
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      // Only close if this is the topmost modal
+      if (e.key === "Escape" && openModalsCount === 1) {
+        onClose();
+      }
     };
 
     document.addEventListener("keydown", handleEsc);
-    document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("keydown", handleEsc);
-      document.body.style.overflow = "";
+
+      // Decrease modal counter and restore scroll if last modal
+      openModalsCount--;
+      if (openModalsCount === 0) {
+        document.body.style.overflow = "";
+      }
     };
   }, [open, onClose]);
 
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50">
+    <div className={`fixed inset-0 z-[${zIndex}]`}>
       {/* Overlay */}
       <div
         onClick={onClose}
         className={`absolute inset-0 bg-black/50 ${overlayClassName}`}
       />
 
-      {/* Modal */}
+      {/* Modal content */}
       <div
-        className={`absolute left-1/2 top-1/2 max-h-[calc(100%-32px)] w-[calc(100%-32px)] max-w-lg -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-lg bg-white p-4 shadow-lg ${contentClassName}`}
+        className={`
+      absolute left-1/2 top-1/2
+      w-full max-w-full sm:max-w-lg
+      max-h-[calc(100%-2rem)] sm:max-h-[calc(100%-32px)]
+      p-4
+      -translate-x-1/2 -translate-y-1/2
+      overflow-y-auto rounded-lg bg-white shadow-lg
+      ${contentClassName}
+    `}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Title (accessibility-friendly) */}
+
+        {/* Title */}
         {title && (
           <h2 className="mb-4 text-xl font-semibold text-gray-900">
             {title}
           </h2>
         )}
 
-        {/* Content */}
+        {/* Modal content */}
         {children}
 
         {/* Close button */}
@@ -70,15 +96,15 @@ export default function AppModal({
             onClick={onClose}
             aria-label="Close modal"
             className="
-                      absolute right-3 top-3
-                      rounded-full p-1.5
-                      text-gray-600
-                      hover:bg-gray-200
-                      hover:text-gray-900
-                      transition
-                      focus:outline-none
-                      focus:ring-2 focus:ring-gray-400/30
-                    "
+              absolute right-3 top-3
+              rounded-full p-1.5
+              text-gray-600
+              hover:bg-gray-200
+              hover:text-gray-900
+              transition
+              focus:outline-none
+              focus:ring-2 focus:ring-gray-400/30
+            "
           >
             <X size={18} />
           </button>

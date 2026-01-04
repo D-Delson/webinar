@@ -1,41 +1,69 @@
-import axios from "axios";
+"use client";
 
-import { getRefreshToken, getAccessToken, setTokenAndUserData } from "@/utils/token";
+import axios, { AxiosError, AxiosInstance } from "axios";
+import {
+  getAccessToken,
+  getRefreshToken,
+  setTokenData,
+  clearTokenData,
+} from "./tokenHelpers";
 import { getHostAPIUrl } from "@/utils/getHostUrl";
+import { ADMIN_REFRESH_API } from "../endpoints/auth";
 
 let isRefreshing = false;
-let refreshSubscribers: ((newToken?: string) => void)[] = [];
+let subscribers: ((token: string) => void)[] = [];
 
-export default function appAxios() {
-  const axiosCreate = axios.create({
+const subscribe = (cb: (token: string) => void) => {
+  subscribers.push(cb);
+};
+
+const notifySubscribers = (token: string) => {
+  subscribers.forEach((cb) => cb(token));
+  subscribers = [];
+};
+
+export default function appAxios(): AxiosInstance {
+  const instance = axios.create({
     baseURL: getHostAPIUrl(),
     timeout: 30000,
     responseType: "json",
   });
 
-  const ref_token = getRefreshToken();
+  /* =========================
+     Attach Access Token
+  ========================= */
+  instance.interceptors.request.use((config) => {
+    const token = getAccessToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  });
 
-  const subscribeToRefreshToken = (callback: (newToken?: string) => void) => {
-    refreshSubscribers?.push(callback);
-  };
-
-  const retryFailedRequests = (newToken?: string) => {
-    refreshSubscribers?.forEach((callback) => callback(newToken));
-    refreshSubscribers = [];
-  };
-
-  axiosCreate.interceptors.response.use(
+  /* =========================
+     Refresh Token Logic
+  ========================= */
+  instance.interceptors.response.use(
     (response) => response,
-    async (error) => {
-      const originalRequest = error?.config;
-      const status = error?.response?.status;
+    async (error: AxiosError) => {
+      const originalRequest: any = error.config;
+      const status = error.response?.status;
 
-      if ([401, 403]?.includes(status) && !originalRequest._retry) {
+      if ((status === 401 || status === 403) && !originalRequest._retry) {
+        console.log("[AUTH] 401/403 detected → starting refresh flow");
+
+        originalRequest._retry = true;
+
         if (isRefreshing) {
+          console.log("[AUTH] Refresh already in progress → queueing request");
+
           return new Promise((resolve) => {
-            subscribeToRefreshToken((newToken?: string) => {
+            subscribe((newToken) => {
+              console.log(
+                "[AUTH] Subscriber notified → retrying queued request"
+              );
               originalRequest.headers.Authorization = `Bearer ${newToken}`;
-              resolve(axios(originalRequest));
+              resolve(instance(originalRequest));
             });
           });
         }
@@ -43,29 +71,37 @@ export default function appAxios() {
         isRefreshing = true;
 
         try {
-          const data = await axios.post(getHostAPIUrl(),{
-            refresh_token: ref_token,
-          });
+          const refreshToken = getRefreshToken();
 
-          const { access_token, refresh_token, token_type } =
-            data?.data?.data || {};
-
-          if (refresh_token) {
-            setTokenAndUserData({
-              //@ts-ignore
-              token: data?.data?.data,
-            });
-
-            originalRequest.headers.Authorization = `${token_type} ${access_token}`;
-            retryFailedRequests(access_token);
-
-            return axios(originalRequest);
+          if (!refreshToken) {
+            throw new Error("No refresh token");
           }
-        } catch (e) {
-          console.error("Error refreshing token:", e);
-          window.location.replace("/");
+
+          const response = await axios.post(
+            getHostAPIUrl() + ADMIN_REFRESH_API,
+            { refresh: refreshToken }
+          );
+
+          const { access, refresh } = response.data?.data || {};
+          if (!access) {
+            throw new Error("Invalid refresh response");
+          }
+
+          setTokenData({
+            token: { access, refresh },
+          });
+          notifySubscribers(access);
+
+          originalRequest.headers.Authorization = `Bearer ${access}`;
+
+          return instance(originalRequest);
+        } catch (err) {
+          clearTokenData();
+          window.location.replace("/admin/login");
+          return Promise.reject(err);
         } finally {
           isRefreshing = false;
+          console.log("[AUTH] Refresh lock released");
         }
       }
 
@@ -73,5 +109,5 @@ export default function appAxios() {
     }
   );
 
-  return axiosCreate;
+  return instance;
 }
