@@ -82,7 +82,7 @@ export default function AppModal({
 
         {/* Title */}
         {title && (
-          <h2 className="mb-4 text-xl font-semibold text-gray-900">
+          <h2 className="mb-4 text-xl font-semibold text-[#333] font-bold">
             {title}
           </h2>
         )}

@@ -26,18 +26,25 @@ export default function MultiSelect({ options, selected, onChange }: MultiSelect
             {options.map((option) => {
                 const isSelected = selected.some((s) => s.id === option.id);
                 return (
-                    <div
+                    <label
                         key={option.id}
-                        onClick={() => toggleOption(option)}
                         className={`
               cursor-pointer flex justify-between items-center p-3 border rounded-lg
-              ${isSelected ? "bg-blue-50 border-blue-500" : "border-gray-300 hover:border-blue-400"}
+              ${isSelected ? "bg-blue-50" : "border-gray-300 hover:border-blue-400"}
               transition
             `}
                     >
-                        <span>{option.identity}</span>
-                        <span>₹{option.price}</span>
-                    </div>
+                        <div className="flex items-center gap-3">
+                            <input
+                                type="checkbox"
+                                checked={isSelected}
+                                onChange={() => toggleOption(option)}
+                                className="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-500"
+                            />
+                            <span className="text-[#333]">{option.identity}</span>
+                        </div>
+                        <span className="text-[#333] font-medium">₹{option.price}</span>
+                    </label>
                 );
             })}
         </div>
