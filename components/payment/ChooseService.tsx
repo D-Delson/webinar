@@ -113,10 +113,10 @@ export function ChooseService() {
             >
                 {/* Optional summary */}
                 <div className="mb-4">
-                    <p className="text-sm font-medium text-gray-700 mb-2">
+                    <p className="text-sm font-medium text-[#333] mb-2">
                         Selected Services
                     </p>
-                    <ul className="text-sm text-gray-600 space-y-1">
+                    <ul className="text-sm text-[#333] space-y-1">
                         {selectedServices.map(service => (
                             <li key={service.id}>
                                 • {service.identity} — ₹{service.price}
