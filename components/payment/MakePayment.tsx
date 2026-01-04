@@ -117,7 +117,7 @@ export default function MakePaymentForm({
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!phoneRegex.test(form.phone_number)) {
-            newErrors.phone = "Enter a valid 10-digit Indian number";
+            newErrors.phone = "Enter a valid 10 digit phone number";
         }
 
         if (!form.email || !emailRegex.test(form.email)) {
@@ -210,7 +210,7 @@ export default function MakePaymentForm({
             {/* Phone Number with fixed +91 */}
             <div>
                 <label className="mb-1 block text-sm font-medium text-gray-700">
-                    Phone Number
+                    10 digit phone number
                 </label>
 
                 <div className="flex items-center rounded-lg border border-gray-300 bg-white focus-within:ring-2 focus-within:ring-blue-500/20">
