@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 
 import { MAKE_PAYMENT_API } from "@/api/endpoints/payment";
@@ -8,11 +8,30 @@ import { getHostAPIUrl } from "@/utils/getHostUrl";
 import { loadRazorpay } from "@/utils/razorpay";
 import AppInput from "../common/AppInput";
 
-const MIN_AMOUNT = 1000;
+/* -------------------- Constants -------------------- */
+const MIN_AMOUNT = 500;
+
+/* -------------------- Types -------------------- */
+export type Service = {
+    id: string;
+    identity: string;
+    price: number;
+};
+
+type MakePaymentProps = {
+    amount?: number;
+    type: string;
+    selectedServices?: Service[];
+    onSuccess?: (data: any) => void;
+};
+
+/* -------------------- Utils -------------------- */
+const getMinAmount = (services: Service[] = []): number =>
+    services.reduce((sum, ser) => sum + ser.price, 0);
 
 /* -------------------- Textarea Component -------------------- */
 type AppTextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
-    label?: string;
+    label?: React.ReactNode;
 };
 
 function AppTextarea({ label, className = "", ...props }: AppTextareaProps) {
@@ -39,26 +58,25 @@ function AppTextarea({ label, className = "", ...props }: AppTextareaProps) {
 }
 
 /* -------------------- Main Form -------------------- */
-export type Service = {
-    id: string;
-    identity: string;
-    price: number;
-};
-
-type MakePaymentProps = {
-    amount?: number;
-    type: string;
-    selectedServices?: Service[];
-    onSuccess?: (data: any) => void;
-};
-
 export default function MakePaymentForm({
     amount: initialAmount = MIN_AMOUNT,
     type,
-    selectedServices,
+    selectedServices = [],
     onSuccess,
 }: MakePaymentProps) {
-    console.log(selectedServices, "selected service")
+    /* -------------------- Derived Minimum -------------------- */
+    const serviceMinAmount = useMemo(
+        () => getMinAmount(selectedServices),
+        [selectedServices]
+    );
+
+    const effectiveMinAmount = Math.max(
+        initialAmount,
+        MIN_AMOUNT,
+        serviceMinAmount
+    );
+
+    /* -------------------- State -------------------- */
     const [form, setForm] = useState({
         name: "",
         type,
@@ -66,7 +84,7 @@ export default function MakePaymentForm({
         enquiry: "",
         email: "",
         phone_number: "",
-        amount: initialAmount.toString(),
+        amount: effectiveMinAmount.toString(),
     });
 
     const [errors, setErrors] = useState<{
@@ -74,6 +92,17 @@ export default function MakePaymentForm({
         phone?: string;
         amount?: string;
     }>({});
+
+    /* -------------------- Sync amount when services change -------------------- */
+    useEffect(() => {
+        setForm(prev => ({
+            ...prev,
+            amount: Math.max(
+                Number(prev.amount || 0),
+                effectiveMinAmount
+            ).toString(),
+        }));
+    }, [effectiveMinAmount]);
 
     /* -------------------- Change Handler -------------------- */
     const handleChange = (
@@ -83,14 +112,14 @@ export default function MakePaymentForm({
 
         if (name === "amount") {
             if (value === "" || /^\d+$/.test(value)) {
-                setForm(prev => ({ ...prev, amount: value }));
-
                 const numValue = value === "" ? 0 : Number(value);
+
+                setForm(prev => ({ ...prev, amount: value }));
                 setErrors(prev => ({
                     ...prev,
                     amount:
-                        value !== "" && numValue < MIN_AMOUNT
-                            ? `Minimum amount is ₹${MIN_AMOUNT}`
+                        value !== "" && numValue < effectiveMinAmount
+                            ? `Minimum amount is ₹${effectiveMinAmount}`
                             : undefined,
                 }));
             }
@@ -125,8 +154,8 @@ export default function MakePaymentForm({
         }
 
         const amountNum = Number(form.amount || 0);
-        if (amountNum < MIN_AMOUNT) {
-            newErrors.amount = `Minimum amount is ₹${MIN_AMOUNT}`;
+        if (amountNum < effectiveMinAmount) {
+            newErrors.amount = `Minimum amount is ₹${effectiveMinAmount}`;
         }
 
         setErrors(newErrors);
@@ -138,7 +167,7 @@ export default function MakePaymentForm({
         if (!validate()) return;
 
         const url = getHostAPIUrl() + MAKE_PAYMENT_API;
-        const serviceIds = selectedServices?.map(service => service.id) || [];
+        const serviceIds = selectedServices.map(service => service.id);
 
         const payload = {
             ...form,
@@ -196,7 +225,7 @@ export default function MakePaymentForm({
 
     /* -------------------- Render -------------------- */
     const amountNum = Number(form.amount || 0);
-    const canPay = amountNum >= MIN_AMOUNT;
+    const canPay = amountNum >= effectiveMinAmount;
 
     return (
         <div className="space-y-5">
@@ -207,7 +236,7 @@ export default function MakePaymentForm({
                 onChange={handleChange}
             />
 
-            {/* Phone Number with fixed +91 */}
+            {/* Phone Number */}
             <div>
                 <label className="mb-1 block text-sm font-medium text-gray-700">
                     10 digit phone number
@@ -242,7 +271,6 @@ export default function MakePaymentForm({
                 type="email"
                 required
                 placeholder="you@example.com"
-                icon={<span>📧</span>}
                 value={form.email}
                 onChange={handleChange}
                 error={errors.email}
@@ -271,7 +299,7 @@ export default function MakePaymentForm({
                     <div className="flex items-center justify-between">
                         <span>Amount (₹)</span>
                         <span className="text-xs text-gray-500">
-                            Min ₹{MIN_AMOUNT}
+                            Min ₹{effectiveMinAmount}
                         </span>
                     </div>
                 }
