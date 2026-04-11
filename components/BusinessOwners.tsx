@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import Section from "./Section";
+
 
 interface ProblemCardProps {
   category: string;
@@ -10,6 +12,7 @@ interface ProblemCardProps {
   imageAlt: string;
   bgColor: string;
   topImg?: boolean;
+  href?: string;
 }
 
 function ProblemCard({
@@ -21,8 +24,9 @@ function ProblemCard({
   imageAlt,
   bgColor,
   topImg = false,
+  href,
 }: ProblemCardProps) {
-  return (
+  const content = (
     <div
       className={`${topImg
         ? "rounded-lg"
@@ -69,7 +73,19 @@ function ProblemCard({
         </div>
       ) : null}
     </div>
-  );
+
+  )
+
+  if (href) {
+    return (
+      <Link href={href} className="block cursor-pointer">
+        {content}
+      </Link>
+    );
+
+  }
+
+  return content
 }
 
 export default function BusinessOwners() {
@@ -109,6 +125,7 @@ export default function BusinessOwners() {
               imageSrc="/members_group.png"
               imageAlt="Team members group"
               bgColor="#F0EAFE"
+              href="/hr"
             />
           </div>
 
