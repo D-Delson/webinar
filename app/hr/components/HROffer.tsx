@@ -73,11 +73,14 @@ const HROffer = () => {
         </div>
 
         {/* EXISTING CONTENT */}
-        <p className="bg-white px-8 w-fit rounded-3xl mt-8 text-[13px] py-2 text-black">
+        <p className="bg-white px-8 w-fit rounded-3xl mt-8 text-[13px] font-semibold py-2 text-black md:hidden">
           This is hands-on support, not just advice.
         </p>
+        <p className="bg-white px-8 w-fit rounded-3xl mt-8 text-[13px] font-semibold py-2 text-black hidden md:block">
+          One time investment For the full 30-day Hands-on Setup Service
+        </p>
 
-        <h1 className="font-black text-[64px] text-[#E9ED26]">
+        <h1 className="font-black text-[64px] md:text-[100px] text-[#E9ED26]">
           ₹5,000
         </h1>
 
@@ -98,6 +101,14 @@ const HROffer = () => {
             Support real implementation
           </p>
         </div>
+
+        <div className=" bg-gradient-to-r from-[#E84127] via-[#DC2D1D] to-[#D41F17] py-3.5  px-8 md:px-40 font-semibold text-[20px] md:text-[24px] capitalize mt-7">
+          Fix Team Structure in 30 Days
+        </div>
+
+        <p className="italic font-light text-[14px] leading-[25px] tracking-[4%] capitalize text-[#B8C4C0] px-12 mt-4 mb-4">
+          This is not training or theory. This is structured support for your real business.
+        </p>
       </div>
     </>
   );
