@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import AppModal from "./common/AppModel";
 import Container from "./Container";
-import MakePaymentForm from "./payment/MakePayment";
 import { ChooseService } from "./payment/ChooseService";
 
 export default function Header() {
