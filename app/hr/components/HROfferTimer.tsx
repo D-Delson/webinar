@@ -2,7 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-const HROfferTimer = () => {
+type HROfferTimerProps = {
+    open: boolean;
+    setOpen: (value: boolean) => void;
+}
+
+const HROfferTimer = ({open, setOpen}: HROfferTimerProps) => {
     const targetDate = new Date("2026-04-20T23:59:59"); // 🔥 hardcoded
 
     const [timeLeft, setTimeLeft] = useState({
@@ -68,7 +73,9 @@ const HROfferTimer = () => {
                 </div>
 
                 {/* CTA */}
-                <div className="text-[20px] rounded capitalize text-white bg-gradient-to-r from-[#E84127] via-[#DC2D1D] to-[#D41F17] px-8 py-3 text-center">
+                <div
+                    onClick={() => setOpen(!open)}
+                    className="text-[20px] rounded capitalize cursor-pointer text-white bg-gradient-to-r from-[#E84127] via-[#DC2D1D] to-[#D41F17] px-8 py-3 text-center">
                     schedule call at ₹5,000
                 </div>
             </div>

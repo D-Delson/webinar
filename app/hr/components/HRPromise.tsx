@@ -1,4 +1,9 @@
+"use client"
+
 import Image from "next/image";
+import { useState } from "react";
+import { ChooseService } from "@/components/payment/ChooseService";
+import AppModal from "@/components/common/AppModel";
 
 
 type InfoBoxProps = {
@@ -24,7 +29,13 @@ const InfoBox = ({ heading, description }: InfoBoxProps) => {
 
 }
 
-const HRPromise = () => {
+type HRPromiseTypes = {
+    open: boolean;
+    setOpen: (value: boolean) => void
+}
+
+const HRPromise = ({ open, setOpen }: HRPromiseTypes) => {
+
     return (
         <>
             <section className="px-4 md:px-28 py-10 md:py-20 font-sans w-full bg-[#F9FAFC]">
@@ -77,16 +88,12 @@ const HRPromise = () => {
                         <div className="uppercase text-medium text-[20px] px-4 py-2 text-center">
                             need this result?
                         </div>
-                        <div className=" text-medium text-[20px] bg-gradient-to-r from-[#E84127] via-[#DC2D1D] to-[#D41F17] px-8 py-3 text-center">
+                        <div onClick={() => setOpen(!open)}
+                            className=" text-medium cursor-pointer text-[20px] bg-gradient-to-r from-[#E84127] via-[#DC2D1D] to-[#D41F17] px-8 py-3 text-center">
                             schedule call at ₹5,000
                         </div>
                     </div>
-                    
-
-
                 </div>
-
-
 
             </section>
         </>
