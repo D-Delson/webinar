@@ -7,7 +7,7 @@ type HROfferTimerProps = {
     setOpen: (value: boolean) => void;
 }
 
-const HROfferTimer = ({open, setOpen}: HROfferTimerProps) => {
+const HROfferTimer = ({ open, setOpen }: HROfferTimerProps) => {
     const targetDate = new Date("2026-04-20T23:59:59"); // 🔥 hardcoded
 
     const [timeLeft, setTimeLeft] = useState({
@@ -46,26 +46,27 @@ const HROfferTimer = ({open, setOpen}: HROfferTimerProps) => {
     }, []);
 
     return (
-        <section className="hidden md:block fixed bottom-38 left-0 w-full px-6 md:px-28 py-4 font-sans bg-white h-20 shadow-[0px_-2px_4px_0px_#BDBBBB40] z-50">
-            <div className="flex items-center justify-between h-full font-urbanist">
-                {/* price */}
-                <div className="flex justify-center items-center gap-3">
-                    <p className="font-bold text-[32px] text-[#11082C]">₹5,000</p>
-                    <p className="font-semibold text-[#9B9A9D] text-[24px] line-through">₹8,000</p>
+        <section className="fixed bottom-0 left-0 w-full px-4 md:px-28 py-3 md:py-4 font-sans bg-white shadow-[0px_-2px_4px_0px_#BDBBBB40] z-50">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-0 font-urbanist">
+
+                {/* PRICE */}
+                <div className="flex justify-center items-center gap-2 md:gap-3">
+                    <p className="font-bold text-[24px] md:text-[32px] text-[#11082C]">₹5,000</p>
+                    <p className="font-semibold text-[#9B9A9D] text-[16px] md:text-[24px] line-through">₹8,000</p>
                 </div>
 
-                {/* timer */}
-                <div className="flex gap-3 items-center">
-                    <div className="mr-3 font-semibold text-[24px] text-[#11082C] capitalize">
-                        offer expires in :
+                {/* TIMER */}
+                <div className="flex flex-wrap justify-center items-center gap-2 md:gap-3 text-center">
+                    <div className="w-full md:w-auto font-semibold text-[16px] md:text-[24px] text-[#11082C] capitalize">
+                        offer expires in:
                     </div>
 
                     {Object.entries(timeLeft).map(([key, value]) => (
-                        <div key={key} className="flex flex-col items-center">
-                            <div className="font-extrabold text-[26px] text-[#11082C]">
+                        <div key={key} className="flex flex-col items-center min-w-[40px]">
+                            <div className="font-extrabold text-[20px] md:text-[26px] text-[#11082C]">
                                 {value}
                             </div>
-                            <div className="text-[14px] text-[#9B9A9D] capitalize">
+                            <div className="text-[12px] md:text-[14px] text-[#9B9A9D] capitalize">
                                 {key}
                             </div>
                         </div>
@@ -75,9 +76,11 @@ const HROfferTimer = ({open, setOpen}: HROfferTimerProps) => {
                 {/* CTA */}
                 <div
                     onClick={() => setOpen(!open)}
-                    className="text-[20px] rounded capitalize cursor-pointer text-white bg-gradient-to-r from-[#E84127] via-[#DC2D1D] to-[#D41F17] px-8 py-3 text-center">
+                    className="w-full md:w-auto text-[16px] md:text-[20px] rounded capitalize cursor-pointer text-white bg-gradient-to-r from-[#E84127] via-[#DC2D1D] to-[#D41F17] px-6 md:px-8 py-2 md:py-3 text-center"
+                >
                     schedule call at ₹5,000
                 </div>
+
             </div>
         </section>
     );

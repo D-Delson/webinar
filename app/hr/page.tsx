@@ -12,12 +12,13 @@ import HROutcome from "./components/HROutcom";
 import HROffer from "./components/HROffer";
 import HRFAQ from "./components/HRFAQ";
 import HROfferTimer from "./components/HROfferTimer";
+import Footer from "@/components/Footer";
 import { Inter } from "next/font/google";
 
 const inter = Inter({
     subsets: ["latin"],
     variable: "--font-inter",
-    weight: ["400", "500", "600", "700", "800"],
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
 });
 
 import { Urbanist } from "next/font/google";
@@ -25,7 +26,7 @@ import { Urbanist } from "next/font/google";
 const urbanist = Urbanist({
     subsets: ["latin"],
     variable: "--font-urbanist",
-    weight: ["400", "500", "600", "700", "800"],
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
 });
 
 const HR = () => {
@@ -42,6 +43,9 @@ const HR = () => {
                 <HROffer />
                 <HRFAQ />
                 <HROfferTimer open={open} setOpen={() => setOpen(!open)} />
+                <div className="mb-49 md:mb-23">
+                <Footer />
+                </div>
             </div>
 
             <AppModal
