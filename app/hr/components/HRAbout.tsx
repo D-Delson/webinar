@@ -136,7 +136,8 @@ const HRAbout = () => {
                     </div>
 
                 </div>
-                <div className="w-full h-1/2 md:h-[540px] relative">
+                {/* <div className="w-full h-1/2 md:h-[540px] relative"> */}
+                <div className="w-full  md:h-[540px] relative aspect-square">
                     <Image
                         src={"/hr/hr_about.png"}
                         alt={"hero"}

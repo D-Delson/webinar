@@ -30,15 +30,18 @@ const HROffer = () => {
 
           {/* LEFT */}
           <div className="md:w-1/2 text-center md:text-left">
-            <h1 className="font-extrabold text-[#071711] text-[30px] leading-[41px] uppercase">
+            <div className="w-3/4">
+              <h1 className="font-bold text-[#071711] text-[36px] leading-[51px] uppercase tracking-normal">
               <span className="italic text-[#E53D25]">Who is</span>{" "}
               this 30-Day Team Setup Service
             </h1>
 
-            <p className="font-normal text-[16px] leading-[30px] text-[#647388] mt-6">
+            <p className="font-normal text-[20px] leading-8 text-[#647388] mt-6 tracking-normal">
               We work exclusively with established Tamil Nadu business owners
               ready for real operational change.
             </p>
+            </div>
+            
           </div>
 
           {/* RIGHT */}
@@ -61,22 +64,23 @@ const HROffer = () => {
         <div
           className="absolute -top-4 md:-top-5 
           left-1/2 -translate-x-1/2        /* mobile center */
-          md:left-28 md:translate-x-0      /* desktop align with content */
+          md:left-24 md:translate-x-0      /* desktop align with content */
           bg-gradient-to-r from-[#17D488] via-[#56D914] to-[#17D488]
           text-[#135D2F]
-          px-3 py-1 rounded-full font-medium
+          px-3.5 py-2 rounded-full
           shadow-[0_-4px_4px_#B5FF8F]
-          text-[18px]
+          text-[18px] font-urbanist
+          capitalize font-semibold
   "
         >
           limited time offer: 00:00:00:00
         </div>
 
         {/* EXISTING CONTENT */}
-        <p className="bg-white px-8 w-fit rounded-3xl mt-8 text-[13px] font-semibold py-2 text-black md:hidden">
+        <p className="bg-white px-8 w-fit rounded-3xl mt-8 text-[15px] font-semibold py-2 text-black md:hidden capitalize">
           This is hands-on support, not just advice.
         </p>
-        <p className="bg-white px-8 w-fit rounded-3xl mt-8 text-[13px] font-semibold py-2 text-black hidden md:block">
+        <p className="bg-white px-8 w-fit rounded-3xl mt-8 text-[16px] font-semibold py-2 text-black hidden md:block capitalize">
           One time investment For the full 30-day Hands-on Setup Service
         </p>
 
@@ -102,7 +106,8 @@ const HROffer = () => {
           </p>
         </div>
 
-        <div className=" bg-gradient-to-r from-[#E84127] via-[#DC2D1D] to-[#D41F17] py-3.5  px-8 md:px-40 font-semibold text-[20px] md:text-[24px] capitalize mt-7">
+        <div className=" bg-gradient-to-r from-[#E84127] via-[#DC2D1D] to-[#D41F17] py-3.5  px-8 md:px-40 
+        font-semibold text-[20px] md:text-[24px] capitalize mt-7 font-urbanist">
           Fix Team Structure in 30 Days
         </div>
 

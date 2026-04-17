@@ -15,7 +15,7 @@ type InfoBoxProps = {
 const InfoBox = ({ heading, description }: InfoBoxProps) => {
 
     return (
-        <div className="w-fit bg-[#F8F9FA] rounded px-8">
+        <div className="w-fit bg-[#F8F9FA] rounded-xl px-8 pb-4">
             <div className="flex gap-2 py-4">
                 <Image src={"/hr/tick.svg"} width={24} height={24} alt="tick" />
                 <h2 className="font-bold text-[20px] text-[#071711]">{heading}</h2>
@@ -38,7 +38,7 @@ const HRPromise = ({ open, setOpen }: HRPromiseTypes) => {
 
     return (
         <>
-            <section className="px-4 md:px-28 py-10 md:py-20 font-sans w-full bg-[#F9FAFC]">
+            <section className="px-4 md:px-28 py-10 md:py-20 font-sans w-full bg-white">
 
                 <div className="flex justify-center text-center">
                     <div className="max-w-[650px]">
@@ -72,14 +72,14 @@ const HRPromise = ({ open, setOpen }: HRPromiseTypes) => {
 
                 </div>
                 {/* Result box */}
-                <div className="bg-[#071711] text-white flex flex-col md:flex-row w-full p-12 mt-8 md:mt-16 rounded-2xl gap-16 md:gap-0.5">
+                <div className="bg-[#071711] text-white flex flex-col md:flex-row w-full p-8 mt-8 md:mt-16 rounded-2xl gap-16 md:gap-0.5">
 
                     <div className="w-full md:w-2/3 flex flex-col items-center justify-between md:items-start">
-                        <h2 className="capitalize font-thin text-[22px]">the big result</h2>
+                        <h2 className="capitalize font-light text-[22px] md:text-[26px] antialiased tracking-normal">the big result</h2>
 
-                        <h2 className="capitalize font-bold text-[32px] md:text-[36px] mt-12">4-6 Hours Saved</h2>
+                        <h2 className="capitalize font-medium text-[32px] md:text-[36px] mt-5 tracking-normal">4-6 Hours Saved</h2>
 
-                        <p className="font-thin text-[16px] text-[#C3CCD9] leading-[26px] mt-8 text-center">Recover your daily life. Use this time to find new orders and build your shop's future.</p>
+                        <p className="font-extralight text-[16px] text-[#C3CCD9] leading-[26px] mt-5 md:text-[18px] text-center tracking-normal">Recover your daily life. Use this time to find new orders and build your shop's future.</p>
 
                     </div>
 
@@ -89,7 +89,7 @@ const HRPromise = ({ open, setOpen }: HRPromiseTypes) => {
                             need this result?
                         </div>
                         <div onClick={() => setOpen(!open)}
-                            className=" text-medium cursor-pointer text-[20px] bg-gradient-to-r from-[#E84127] via-[#DC2D1D] to-[#D41F17] px-8 py-3 text-center">
+                            className=" text-medium rounded font-urbanist cursor-pointer text-[20px] bg-gradient-to-r from-[#E84127] via-[#DC2D1D] to-[#D41F17] px-8 py-2.5 text-center">
                             schedule call at ₹5,000
                         </div>
                     </div>
