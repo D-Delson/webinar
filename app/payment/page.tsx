@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 import AppModal from "@/components/common/AppModel";
 import { ChooseService } from "@/components/payment/ChooseService";
+import MakePaymentForm from "@/components/payment/MakePayment";
 
 const Payment = () => {
     const [open, setOpen] = useState(true);
@@ -20,9 +21,20 @@ const Payment = () => {
             <AppModal
                 open={open}
                 onClose={handleClose}
-                title="Select the services"
+                title="confirm payment - ₹499"
             >
-                <ChooseService />
+                <MakePaymentForm
+                    amount={499}
+                    type="call"
+                    selectedServices={[
+                        {
+                            id: "8",
+                            identity: "Clarity Call",
+                            price: 499
+                        }
+                    ]}
+                    onSuccess={() => setOpen(false)}
+                />
             </AppModal>
         </>
     );
