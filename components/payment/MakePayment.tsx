@@ -9,7 +9,7 @@ import { loadRazorpay } from "@/utils/razorpay";
 import AppInput from "../common/AppInput";
 
 /* -------------------- Constants -------------------- */
-const MIN_AMOUNT = 500;
+const MIN_AMOUNT = 499;
 
 /* -------------------- Types -------------------- */
 export type Service = {
