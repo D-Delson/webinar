@@ -55,7 +55,7 @@ export default function LoginPage() {
                 setTokenData({ token: { access: access, refresh: refresh } });
 
                 // Navigate to dashboard
-                router.push("/dashboard");
+                router.push("/admin/payment");
             }
         } catch (error: any) {
             toast.error(error?.response?.data?.data?.detail || "Login failed")
