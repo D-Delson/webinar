@@ -17,7 +17,7 @@ export const useGuestGuard = () => {
       const now = Math.floor(Date.now() / 1000);
 
       if (decoded.exp > now) {
-        router.replace("/dashboard");
+        router.replace("/admin/payment");
       }
     } catch {
       router.replace("admin/login");
