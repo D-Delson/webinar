@@ -1,6 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
+import { useSearchParams } from "next/navigation";
 
 import AppTable from "@/components/common/AppTable";
 import api from "@/api/utils/appAPI";
@@ -14,16 +15,19 @@ const AdminPayment = () => {
        Payment Data
     ========================= */
 
+    const searchParams = useSearchParams();
+    const page = Number(searchParams.get("page")) || 1;
+
     const {
         data: paymentData,
         isLoading: isPaymentLoading,
         error: paymentError,
     } = useQuery({
-        queryKey: ["admin-payments"],
+        queryKey: ["admin-payments", page],
 
         queryFn: async () => {
             const response = await api.get(
-                ADMIN_PAYMENT_LIST
+                `${ADMIN_PAYMENT_LIST}?page=${page}`
             );
 
             return response.data;
@@ -83,6 +87,7 @@ const AdminPayment = () => {
     return (
         <AppTable
             response={paymentData.data}
+            page={page}
             columns={tableMeta.data}
             rowLink=""
             statusConfig={{
@@ -93,6 +98,38 @@ const AdminPayment = () => {
                         "bg-green-100 text-green-700",
                     failed:
                         "bg-red-100 text-red-700",
+                },
+            }}
+            renderers={{
+                created: (value) => {
+                    if (!value) return "-";
+
+                    return new Date(value).toLocaleString(
+                        "en-IN",
+                        {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            hour12: true,
+                        }
+                    );
+                },
+                appointment_date: (value) => {
+                    if (!value) return "-";
+
+                    return new Date(value).toLocaleString(
+                        "en-IN",
+                        {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            hour12: true,
+                        }
+                    );
                 },
             }}
         />

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 import AppToast from "@/components/common/AppToast";
 import QueryProvider from "@/providers/QueryProvider";
