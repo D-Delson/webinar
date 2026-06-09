@@ -1,5 +1,7 @@
 "use client";
 
+import { Suspense } from "react";
+
 import { useAuthGuard } from "@/hooks/useAuthGuard";
 
 
@@ -13,7 +15,7 @@ export default function AdminLayout({
 }) {
   useAuthGuard();
   return (
-    <div className="h-screen flex">
+    <div className="h-screen flex min-w-0">
       <AdminSidebar />
 
       <div className="flex-1 flex flex-col">
@@ -27,7 +29,10 @@ export default function AdminLayout({
           overflow-auto
         "
         >
-          {children}
+          <Suspense fallback={<div>Loading...</div>}>
+            {children}
+          </Suspense>
+
         </main>
       </div>
     </div>

@@ -7,6 +7,7 @@ import { MAKE_PAYMENT_API } from "@/api/endpoints/payment";
 import { getHostAPIUrl } from "@/utils/getHostUrl";
 import { loadRazorpay } from "@/utils/razorpay";
 import AppInput from "../common/AppInput";
+import AppDateTimePicker from "../common/AppDateTimePicker";
 
 /* -------------------- Constants -------------------- */
 const MIN_AMOUNT = 499;
@@ -23,6 +24,7 @@ type MakePaymentProps = {
     type: string;
     selectedServices?: Service[];
     onSuccess?: (data: any) => void;
+    fromClarity?: boolean;
 };
 
 /* -------------------- Utils -------------------- */
@@ -57,12 +59,24 @@ function AppTextarea({ label, className = "", ...props }: AppTextareaProps) {
     );
 }
 
+type FormState = {
+    name: string;
+    type: string;
+    company_name: string;
+    enquiry: string;
+    email: string;
+    phone_number: string;
+    amount: string;
+    appointment_date?: Date | null;
+};
+
 /* -------------------- Main Form -------------------- */
 export default function MakePaymentForm({
     amount: initialAmount = MIN_AMOUNT,
     type,
     selectedServices = [],
     onSuccess,
+    fromClarity = false,
 }: MakePaymentProps) {
     /* -------------------- Derived Minimum -------------------- */
     const serviceMinAmount = useMemo(
@@ -77,7 +91,7 @@ export default function MakePaymentForm({
     );
 
     /* -------------------- State -------------------- */
-    const [form, setForm] = useState({
+    const [form, setForm] = useState<FormState>({
         name: "",
         type,
         company_name: "",
@@ -85,6 +99,7 @@ export default function MakePaymentForm({
         email: "",
         phone_number: "",
         amount: effectiveMinAmount.toString(),
+        appointment_date: null,
     });
 
     const [errors, setErrors] = useState<{
@@ -311,6 +326,22 @@ export default function MakePaymentForm({
                 error={errors.amount}
                 placeholder="Enter amount"
             />
+
+            {fromClarity && (
+                <AppDateTimePicker
+                    label="Appointment Time"
+                    value={form.appointment_date ?? null}
+                    onChange={(date) =>
+                        setForm((prev) => ({
+                            ...prev,
+                            appointment_date: date ?? null,
+                        }))
+                    }
+                    required
+                />
+            )}
+
+
 
             <button
                 onClick={handleSubmit}

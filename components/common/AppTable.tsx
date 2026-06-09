@@ -3,7 +3,6 @@
 import {
     usePathname,
     useRouter,
-    useSearchParams,
 } from "next/navigation";
 import React from "react";
 
@@ -18,6 +17,8 @@ type DataTableProps = {
     response: PaginatedResponse;
 
     columns: Record<string, string>;
+
+    page: number;
 
     rowLink?: string | null;
 
@@ -38,6 +39,7 @@ type DataTableProps = {
 export default function AppTable({
     response,
     columns,
+    page,
     rowLink = null,
     statusConfig = {},
     renderers = {},
@@ -46,30 +48,28 @@ export default function AppTable({
 
     const pathname = usePathname();
 
-    const searchParams =
-        useSearchParams();
-
     const rows =
         response?.results ?? [];
 
     const count =
         response?.count ?? 0;
 
-    const page =
-        Number(
-            searchParams.get("page")
-        ) || 1;
-
     const getNestedValue = (
         obj: any,
         path: string
     ) => {
-        return path
-            .split("__")
-            .reduce(
-                (acc, key) => acc?.[key],
-                obj
-            );
+        return path.split("__").reduce(
+            (acc, key) => {
+                if (Array.isArray(acc)) {
+                    return acc.map(
+                        (item) => item?.[key]
+                    );
+                }
+
+                return acc?.[key];
+            },
+            obj
+        );
     };
 
     const changePage = (
@@ -77,7 +77,7 @@ export default function AppTable({
     ) => {
         const params =
             new URLSearchParams(
-                searchParams.toString()
+                window.location.search
             );
 
         params.set(
@@ -129,9 +129,7 @@ export default function AppTable({
                         text-xs
                         font-medium
                         ${statusStyles[
-                        String(
-                            value
-                        )
+                        String(value)
                         ] ??
                         "bg-gray-100 text-gray-700"
                         }
@@ -195,6 +193,8 @@ export default function AppTable({
     return (
         <div
             className="
+                w-full
+                min-w-0
                 overflow-hidden
                 rounded-2xl
                 border
@@ -222,31 +222,13 @@ export default function AppTable({
                             text-gray-900
                         "
                     >
-                        Total Records:
-                        {" "}
-                        {count}
+                        Total Records: {count}
                     </h3>
                 </div>
-
-                {/* <input
-                    placeholder="Search..."
-                    className="
-                        w-72
-                        rounded-lg
-                        border
-                        border-gray-300
-                        px-4
-                        py-2
-                        text-sm
-                        outline-none
-                        focus:ring-2
-                        focus:ring-blue-500
-                    "
-                /> */}
             </div>
 
-            <div className="overflow-x-auto">
-                <table className="w-full">
+            <div className="w-full overflow-x-auto">
+                <table className="min-w-max">
                     <thead>
                         <tr
                             className="
@@ -306,14 +288,11 @@ export default function AppTable({
                                         border-b
                                         border-gray-100
                                         transition-all
-
                                         ${rowLink
                                             ? "cursor-pointer"
                                             : ""
                                         }
-
                                         hover:bg-blue-50
-
                                         ${rowIndex %
                                             2 ===
                                             0

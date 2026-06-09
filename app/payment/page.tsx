@@ -28,12 +28,13 @@ const Payment = () => {
                     type="call"
                     selectedServices={[
                         {
-                            id: "8",
+                            id: "1",
                             identity: "Clarity Call",
                             price: 499
                         }
                     ]}
                     onSuccess={() => setOpen(false)}
+                    fromClarity={true}
                 />
             </AppModal>
         </>
