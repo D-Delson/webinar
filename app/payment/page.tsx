@@ -28,7 +28,7 @@ const Payment = () => {
                     type="call"
                     selectedServices={[
                         {
-                            id: "1",
+                            id: "8",
                             identity: "Clarity Call",
                             price: 499
                         }
