@@ -21,7 +21,7 @@ const Payment = () => {
             <AppModal
                 open={open}
                 onClose={handleClose}
-                title="confirm payment - ₹499"
+                title="Confirm payment - ₹499"
             >
                 <MakePaymentForm
                     amount={499}
