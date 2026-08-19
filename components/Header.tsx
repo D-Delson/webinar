@@ -37,7 +37,8 @@ export default function Header() {
           </div>
           <div className="flex-1 flex justify-end">
             <button className="bg-[#0E172A] text-white px-4 md:px-6 py-2 rounded-full hover:bg-black/80 cursor-pointer transition-colors font-medium text-sm md:text-base"
-              onClick={() => { setOpen(true) }}
+              // onClick={() => { setOpen(true) }} # command
+              disabled
             >
               Book Consultation
             </button>
