@@ -88,7 +88,9 @@ const HRPromise = ({ open, setOpen }: HRPromiseTypes) => {
                         <div className="uppercase text-medium text-[20px] px-4 py-2 text-center">
                             need this result?
                         </div>
-                        <div onClick={() => setOpen(!open)}
+                        <div
+                            // onClick={() => setOpen(!open)} # command
+                            aria-disabled
                             className=" text-medium rounded font-urbanist cursor-pointer text-[20px] bg-gradient-to-r from-[#E84127] via-[#DC2D1D] to-[#D41F17] px-8 py-2.5 text-center">
                             schedule call at ₹5,000
                         </div>

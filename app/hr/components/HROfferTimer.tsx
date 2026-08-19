@@ -75,7 +75,8 @@ const HROfferTimer = ({ open, setOpen }: HROfferTimerProps) => {
 
                 {/* CTA */}
                 <div
-                    onClick={() => setOpen(!open)}
+                    // onClick={() => setOpen(!open)} # command
+                    aria-disabled
                     className="w-full md:w-auto text-[16px] md:text-[20px] rounded capitalize cursor-pointer text-white bg-gradient-to-r from-[#E84127] via-[#DC2D1D] to-[#D41F17] px-6 md:px-8 py-2 md:py-3 text-center"
                 >
                     schedule call at ₹5,000

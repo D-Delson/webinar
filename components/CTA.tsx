@@ -23,14 +23,16 @@ export default function CTA() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <button
             className="bg-blue-600 text-white px-8 py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-blue-700 transition-colors shadow-md"
-            onClick={() => setOpen(true)}
+            // onClick={() => setOpen(true)} # command
+            disabled
           >
             Start Your Transformation
           </button>
 
           <button
             className="bg-white border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-gray-50 transition-colors"
-            onClick={() => setOpen(true)}
+            // onClick={() => setOpen(true)}  # command
+            disabled
           >
             Book 15-min Call at ₹499
           </button>
