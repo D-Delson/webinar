@@ -1,2532 +1,2412 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#17294a" />
+    <meta
+      name="description"
+      content="Planning to build an app in India? Turais Clarity helps non-technical founders plan their app, compare developers and stay on top of delivery. Start with a free 15-minute discussion."
+    />
+    <title>Turais Clarity | Independent App Guidance for Indian Founders</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Turais — App Development Consultation</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
 
-  <!-- Meta Pixel Code -->
-  <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq("init", "1658008399333436");
+      fbq("track", "PageView");
+    </script>
+    <!-- End Meta Pixel Code -->
 
-      fbq('init', '1658008399333436');
-      fbq('track', 'PageView');
-  </script>
-  <!-- End Meta Pixel Code -->
-
-
-  <style>
-    /* ============================================================
-    Fonts
-  ============================================================ */
-    @font-face {
-      font-family: "Helvetica Neue";
-      src: url("/public/fonts/HelveticaNeueBlack.otf") format("opentype");
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: "Helvetica Neue";
-      src: url("/fonts/HelveticaNeueMedium.otf") format("opentype");
-      font-weight: 500;
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: "Helvetica Neue";
-      src: url("/fonts/HelveticaNeueMedium.otf") format("opentype");
-      font-weight: 600;
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: "Helvetica Neue";
-      src: url("/fonts/HelveticaNeueBold.otf") format("opentype");
-      font-weight: 700;
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: "Helvetica Neue";
-      src: url("/fonts/HelveticaNeueHeavy.otf") format("opentype");
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    /* ============================================================
-   RESET & TOKENS
-  ============================================================ */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box
-    }
-
-    :root {
-      --white: #ffffff;
-      --bg: #f8f7f4;
-      --bg2: #f0ede8;
-      --navy: #1b2a4a;
-      --navy2: #243660;
-      --navy-light: #e8ecf5;
-      --slate: #4a5568;
-      --slate2: #718096;
-      --slate3: #a0aec0;
-      --gold: #c8963c;
-      --gold-light: #fdf4e7;
-      --gold2: #b07d2a;
-      --green: #276749;
-      --green-light: #e8f4ee;
-      --border: #e2ddd6;
-      --border2: #ccc7be;
-      --font-display: 'Helvetica Neue', 'Playfair Display', serif;
-      --font-body: 'Plus Jakarta Sans', sans-serif;
-      --shadow-sm: 0 1px 3px rgba(27, 42, 74, 0.06), 0 1px 2px rgba(27, 42, 74, 0.04);
-      --shadow-md: 0 4px 16px rgba(27, 42, 74, 0.08), 0 2px 6px rgba(27, 42, 74, 0.05);
-      --shadow-lg: 0 12px 40px rgba(27, 42, 74, 0.12), 0 4px 12px rgba(27, 42, 74, 0.06);
-      --shadow-xl: 0 24px 64px rgba(27, 42, 74, 0.14), 0 8px 24px rgba(27, 42, 74, 0.08);
-    }
-
-    html {
-      scroll-behavior: smooth
-    }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--white);
-      color: var(--navy);
-      overflow-x: hidden;
-      line-height: 1.6
-    }
-
-    /* ============================================================
-   NAVIGATION
-============================================================ */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 300;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 5%;
-      height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: box-shadow 0.3s;
-    }
-
-    nav.scrolled {
-      box-shadow: var(--shadow-md)
-    }
-
-    .logo {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--navy);
-      letter-spacing: -0.02em
-    }
-
-    .logo span {
-      color: var(--gold)
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center
-    }
-
-    .nav-link {
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--slate);
-      text-decoration: none;
-      transition: color 0.2s
-    }
-
-    .nav-link:hover {
-      color: var(--navy)
-    }
-
-    .nav-cta {
-      background: var(--navy);
-      color: var(--white);
-      padding: 0.6rem 1.5rem;
-      font-size: 0.82rem;
-      font-weight: 600;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-      letter-spacing: 0.01em
-    }
-
-    .nav-cta:hover {
-      background: var(--navy2);
-      transform: translateY(-1px)
-    }
-
-    /* ============================================================
-   HERO
-============================================================ */
-    .hero {
-      padding-top: 68px;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(160deg, var(--white) 0%, var(--bg) 60%, var(--bg2) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -15%;
-      right: -8%;
-      width: 700px;
-      height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(200, 150, 60, 0.07) 0%, transparent 70%);
-      pointer-events: none
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -20%;
-      left: -10%;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(27, 42, 74, 0.05) 0%, transparent 70%);
-      pointer-events: none
-    }
-
-    .hero-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 5rem 5%;
-      display: grid;
-      grid-template-columns: 1fr 460px;
-      gap: 5rem;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-      width: 100%
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--gold-light);
-      border: 1px solid rgba(200, 150, 60, 0.25);
-      color: var(--gold2);
-      padding: 0.4rem 0.9rem;
-      border-radius: 100px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      margin-bottom: 1.8rem
-    }
-
-    .hero-badge::before {
-      content: '●';
-      font-size: 0.5rem;
-      color: var(--gold)
-    }
-
-    .hero-h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 4.5vw, 4.2rem);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      color: var(--navy);
-      margin-bottom: 1.5rem
-    }
-
-    .hero-h1 em {
-      font-style: italic;
-      font-weight: 300;
-      color: var(--gold);
-      display: block
-    }
-
-    .hero-sub {
-      font-size: 1.05rem;
-      font-weight: 400;
-      color: var(--slate);
-      line-height: 1.8;
-      max-width: 520px;
-      margin-bottom: 2.5rem
-    }
-
-    .hero-sub strong {
-      color: var(--navy);
-      font-weight: 600
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem
-    }
-
-    .btn-primary {
-      background: var(--navy);
-      color: var(--white);
-      padding: 0.9rem 2rem;
-      font-size: 0.88rem;
-      font-weight: 600;
-      border-radius: 8px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.2s;
-      box-shadow: var(--shadow-md);
-      letter-spacing: 0.01em
-    }
-
-    .btn-primary:hover {
-      background: var(--navy2);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg)
-    }
-
-    .btn-primary .arrow {
-      transition: transform 0.2s
-    }
-
-    .btn-primary:hover .arrow {
-      transform: translateX(3px)
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--navy);
-      padding: 0.9rem 1.8rem;
-      font-size: 0.88rem;
-      font-weight: 600;
-      border-radius: 8px;
-      text-decoration: none;
-      border: 1.5px solid var(--border2);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.2s
-    }
-
-    .btn-secondary:hover {
-      background: var(--bg);
-      border-color: var(--navy)
-    }
-
-    .hero-trust {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-      flex-wrap: wrap
-    }
-
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--slate2)
-    }
-
-    .trust-item .icon {
-      width: 18px;
-      height: 18px;
-      background: var(--green-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.6rem;
-      color: var(--green);
-      flex-shrink: 0
-    }
-
-    /* Hero card */
-    .hero-card {
-      background: var(--white);
-      border-radius: 16px;
-      box-shadow: var(--shadow-xl);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      animation: floatUp 0.9s 0.3s both
-    }
-
-    @keyframes floatUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px)
+    <style>
+      :root {
+        --navy: #17294a;
+        --navy2: #24395c;
+        --ink: #1b2d46;
+        --muted: #657086;
+        --gold: #c99233;
+        --gold2: #e0b15a;
+        --pale: #fcfaf5;
+        --sand: #f5f2eb;
+        --line: #e9e8e3;
+        --green: #277e68;
+        --shadow: 0 22px 54px rgba(25, 35, 57, 0.09);
       }
-
-      to {
-        opacity: 1;
-        transform: translateY(0)
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
       }
-    }
-
-    .hero-card-header {
-      background: var(--navy);
-      padding: 1.8rem 2rem;
-      position: relative;
-      overflow: hidden
-    }
-
-    .hero-card-header::after {
-      content: '';
-      position: absolute;
-      bottom: -30px;
-      right: -20px;
-      width: 120px;
-      height: 120px;
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 50%
-    }
-
-    .hero-card-tag {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.5);
-      margin-bottom: 0.5rem
-    }
-
-    .hero-card-price {
-      font-family: var(--font-display);
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.1em
-    }
-
-    .hero-card-price sup {
-      font-size: 1.5rem;
-      margin-top: 0.4rem;
-      font-weight: 300
-    }
-
-    .hero-card-price .was {
-      font-size: 1rem;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.35);
-      text-decoration: line-through;
-      align-self: flex-end;
-      padding-bottom: 0.2rem;
-      margin-left: 0.5rem
-    }
-
-    .hero-card-sub {
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.55);
-      margin-top: 0.4rem
-    }
-
-    .hero-card-body {
-      padding: 1.8rem 2rem
-    }
-
-    .hc-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-      margin-bottom: 1.6rem
-    }
-
-    .hc-item {
-      display: flex;
-      gap: 0.75rem;
-      align-items: flex-start
-    }
-
-    .hc-check {
-      width: 20px;
-      height: 20px;
-      min-width: 20px;
-      background: var(--green-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.6rem;
-      color: var(--green);
-      font-weight: 700;
-      margin-top: 1px
-    }
-
-    .hc-text {
-      font-size: 0.84rem;
-      color: var(--slate);
-      line-height: 1.5
-    }
-
-    .hero-card-cta {
-      display: block;
-      background: var(--gold);
-      color: var(--white);
-      padding: 1rem;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      text-align: center;
-      text-decoration: none;
-      transition: all 0.2s;
-      letter-spacing: 0.02em
-    }
-
-    .hero-card-cta:hover {
-      background: var(--gold2);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(200, 150, 60, 0.3)
-    }
-
-    .hero-card-footer {
-      padding: 1rem 2rem;
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.75rem;
-      color: var(--slate2)
-    }
-
-    .hero-card-footer .dot {
-      width: 7px;
-      height: 7px;
-      min-width: 7px;
-      background: var(--gold);
-      border-radius: 50%;
-      animation: pulse 1.6s infinite
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 95px;
       }
-
-      50% {
-        opacity: 0.4
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.58;
+        -webkit-font-smoothing: antialiased;
       }
-    }
-
-    .hero-left {
-      animation: fadeLeft 0.8s 0.1s both
-    }
-
-    @keyframes fadeLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-24px)
+      ::selection {
+        background: #eed3a0;
+        color: var(--navy);
       }
-
-      to {
-        opacity: 1;
-        transform: none
+      a {
+        color: inherit;
+        text-decoration: none;
       }
-    }
-
-    /* ============================================================
-   STATS STRIP
-============================================================ */
-    .stats-strip {
-      background: var(--navy);
-      padding: 3.5rem 5%
-    }
-
-    .stats-inner {
-      max-width: 1180px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0
-    }
-
-    .stat-block {
-      padding: 0 3rem;
-      border-right: 1px solid rgba(255, 255, 255, 0.1);
-      text-align: center
-    }
-
-    .stat-block:first-child {
-      padding-left: 0;
-      text-align: left
-    }
-
-    .stat-block:last-child {
-      border-right: none;
-      text-align: right
-    }
-
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: 3.2rem;
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
-
-    .stat-label {
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.5);
-      line-height: 1.55;
-      text-align: center;
-    }
-
-    /* ============================================================
-   SHARED SECTION
-============================================================ */
-    .section {
-      padding: 6rem 5%
-    }
-
-    .section-inner {
-      max-width: 1180px;
-      margin: 0 auto
-    }
-
-    .section-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold2);
-      margin-bottom: 1rem
-    }
-
-    .section-eyebrow::before {
-      content: '';
-      width: 28px;
-      height: 2px;
-      background: var(--gold);
-      border-radius: 2px
-    }
-
-    h2.s-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: var(--navy);
-      margin-bottom: 1rem
-    }
-
-    h2.s-title em {
-      font-style: italic;
-      font-weight: 300;
-      color: var(--gold)
-    }
-
-    .s-sub {
-      font-size: 1rem;
-      color: var(--slate);
-      line-height: 1.8;
-      max-width: 560px
-    }
-
-    /* ============================================================
-   PAIN SECTION
-============================================================ */
-    .pain-section {
-      background: var(--bg)
-    }
-
-    .pain-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center
-    }
-
-    /* Desktop stacked card visual */
-    .pain-visual {
-      position: relative
-    }
-
-    .pain-card-stack {
-      position: relative;
-      height: 460px
-    }
-
-    .pain-card {
-      position: absolute;
-      background: var(--white);
-      border-radius: 12px;
-      padding: 1.5rem 1.8rem;
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-      transition: transform 0.3s;
-    }
-
-    .pain-card:nth-child(1) {
-      top: 0;
-      left: 0;
-      right: 40px;
-      z-index: 5
-    }
-
-    .pain-card:nth-child(2) {
-      top: 90px;
-      left: 20px;
-      right: 20px;
-      z-index: 4
-    }
-
-    .pain-card:nth-child(3) {
-      top: 180px;
-      left: 40px;
-      right: 0;
-      z-index: 3
-    }
-
-    .pain-card:nth-child(4) {
-      top: 270px;
-      left: 20px;
-      right: 20px;
-      z-index: 2
-    }
-
-    .pain-card:nth-child(5) {
-      top: 360px;
-      left: 0;
-      right: 40px;
-      z-index: 1
-    }
-
-    .pain-card-stack:hover .pain-card:nth-child(1) {
-      transform: translateY(-6px) rotate(-1deg)
-    }
-
-    .pain-card-stack:hover .pain-card:nth-child(2) {
-      transform: translateY(-3px) rotate(0.5deg)
-    }
-
-    .pain-card-stack:hover .pain-card:nth-child(4) {
-      transform: translateY(3px) rotate(-0.5deg)
-    }
-
-    .pain-card-stack:hover .pain-card:nth-child(5) {
-      transform: translateY(6px) rotate(1deg)
-    }
-
-    .pain-icon {
-      width: 36px;
-      height: 36px;
-      min-width: 36px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-      background: rgba(192, 57, 43, 0.08)
-    }
-
-    .pain-card-text {
-      font-size: 0.88rem;
-      color: var(--slate);
-      line-height: 1.6
-    }
-
-    .pain-card-text strong {
-      color: var(--navy);
-      font-weight: 600;
-      display: block;
-      margin-bottom: 0.2rem;
-      font-size: 0.82rem
-    }
-
-    /* Mobile flat list — hidden on desktop */
-    .pain-list-mobile {
-      display: none;
-      flex-direction: column;
-      gap: 0.9rem;
-      margin-top: 2rem
-    }
-
-    .pain-list-item {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 1.2rem 1.5rem;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--border);
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start
-    }
-
-    .pain-list-item .pain-icon {
-      background: rgba(192, 57, 43, 0.08)
-    }
-
-    .pain-list-item .pain-card-text {
-      font-size: 0.88rem;
-      color: var(--slate);
-      line-height: 1.6
-    }
-
-    .pain-list-item .pain-card-text strong {
-      color: var(--navy);
-      font-weight: 600;
-      display: block;
-      margin-bottom: 0.2rem;
-      font-size: 0.82rem
-    }
-
-    /* ============================================================
-   OFFER SECTION
-============================================================ */
-    .offer-section {
-      background: var(--white)
-    }
-
-    .offer-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: end;
-      margin-bottom: 4rem
-    }
-
-    .offer-header .s-sub {
-      max-width: 100%
-    }
-
-    .offer-feature-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--slate2);
-      margin-bottom: 1.2rem
-    }
-
-    .offer-features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem
-    }
-
-    .feat-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--navy-light);
-      color: var(--navy2);
-      padding: 0.45rem 0.9rem;
-      border-radius: 100px;
-      font-size: 0.78rem;
-      font-weight: 600
-    }
-
-    .feat-tag .dot {
-      width: 6px;
-      height: 6px;
-      background: var(--gold);
-      border-radius: 50%;
-      flex-shrink: 0
-    }
-
-    .offer-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem
-    }
-
-    .offer-card {
-      background: var(--bg);
-      border-radius: 14px;
-      padding: 2.2rem 2rem;
-      border: 1.5px solid transparent;
-      position: relative;
-      transition: all 0.25s
-    }
-
-    .offer-card:hover {
-      border-color: var(--gold);
-      background: var(--white);
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px)
-    }
-
-    .oc-num {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: rgba(27, 42, 74, 0.08);
-      line-height: 1;
-      margin-bottom: 1.2rem
-    }
-
-    .oc-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: var(--navy);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      margin-bottom: 1.2rem;
-      position: absolute;
-      top: 2rem;
-      right: 2rem
-    }
-
-    .oc-title {
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 0.6rem;
-      line-height: 1.3
-    }
-
-    .oc-desc {
-      font-size: 0.85rem;
-      color: var(--slate);
-      line-height: 1.7
-    }
-
-    /* Big offer card */
-    .offer-big {
-      margin-top: 3rem;
-      background: var(--navy);
-      border-radius: 16px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      box-shadow: var(--shadow-xl)
-    }
-
-    .ob-left {
-      padding: 3.5rem
-    }
-
-    .ob-tag {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.2rem;
-      display: block
-    }
-
-    .ob-title {
-      font-family: var(--font-display);
-      font-size: 1.9rem;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.2;
-      margin-bottom: 0.5rem
-    }
-
-    .ob-sub {
-      font-size: 0.88rem;
-      color: rgba(255, 255, 255, 0.5);
-      margin-bottom: 2rem
-    }
-
-    .ob-items {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.9rem;
-      margin-bottom: 2rem
-    }
-
-    .ob-item {
-      display: flex;
-      gap: 0.7rem;
-      align-items: flex-start
-    }
-
-    .ob-check {
-      width: 20px;
-      height: 20px;
-      min-width: 20px;
-      background: rgba(200, 150, 60, 0.2);
-      border: 1px solid rgba(200, 150, 60, 0.4);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
-      font-size: 0.6rem;
-      font-weight: 700;
-      margin-top: 1px;
-      flex-shrink: 0
-    }
-
-    .ob-item-text {
-      font-size: 0.83rem;
-      color: rgba(255, 255, 255, 0.65);
-      line-height: 1.5
-    }
-
-    .ob-note {
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.3);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 1.2rem;
-      line-height: 1.6
-    }
-
-    .ob-right {
-      background: var(--gold);
-      padding: 3rem 2.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 1rem
-    }
-
-    .ob-price-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.75)
-    }
-
-    .ob-price {
-      font-family: var(--font-display);
-      font-size: 4.5rem;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1
-    }
-
-    .ob-price-note {
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.5
-    }
-
-    .ob-cta {
-      display: block;
-      width: 100%;
-      background: var(--white);
-      color: var(--gold2);
-      padding: 1rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-decoration: none;
-      text-align: center;
-      transition: all 0.2s;
-      letter-spacing: 0.02em
-    }
-
-    .ob-cta:hover {
-      background: var(--navy);
-      color: var(--white)
-    }
-
-    .ob-scarcity {
-      font-size: 0.72rem;
-      color: rgba(255, 255, 255, 0.6);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem
-    }
-
-    .ob-scarcity .blink {
-      animation: blink 1s step-end infinite;
-      color: var(--white)
-    }
-
-    @keyframes blink {
-      50% {
-        opacity: 0
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
       }
-    }
-
-    /* ============================================================
-   PROCESS SECTION
-============================================================ */
-    .process-section {
-      background: var(--bg)
-    }
-
-    .process-timeline {
-      position: relative;
-      margin-top: 4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0
-    }
-
-    .process-timeline::before {
-      content: '';
-      position: absolute;
-      left: 28px;
-      top: 32px;
-      bottom: 32px;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--gold), var(--navy));
-      border-radius: 2px
-    }
-
-    .proc-item {
-      display: grid;
-      grid-template-columns: 60px 1fr;
-      gap: 2rem;
-      padding: 2.5rem 0;
-      border-bottom: 1px solid var(--border);
-      position: relative
-    }
-
-    .proc-item:last-child {
-      border-bottom: none
-    }
-
-    .proc-dot {
-      width: 58px;
-      height: 58px;
-      background: var(--white);
-      border: 2.5px solid var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--navy);
-      box-shadow: var(--shadow-md);
-      position: relative;
-      z-index: 1;
-      flex-shrink: 0
-    }
-
-    .proc-tag {
-      display: inline-block;
-      font-size: 0.67rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold2);
-      background: var(--gold-light);
-      border: 1px solid rgba(200, 150, 60, 0.25);
-      padding: 0.2rem 0.7rem;
-      border-radius: 100px;
-      margin-bottom: 0.7rem
-    }
-
-    .proc-title {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--navy);
-      margin-bottom: 0.5rem;
-      line-height: 1.3
-    }
-
-    .proc-desc {
-      font-size: 0.9rem;
-      color: var(--slate);
-      line-height: 1.75
-    }
-
-    .proc-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem
-    }
-
-    .proc-pill {
-      background: var(--white);
-      border: 1px solid var(--border);
-      font-size: 0.75rem;
-      color: var(--slate2);
-      padding: 0.3rem 0.8rem;
-      border-radius: 100px;
-      font-weight: 500
-    }
-
-    /* ============================================================
-   AUDIENCE
-============================================================ */
-    .audience-section {
-      background: var(--white)
-    }
-
-    .audience-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 3.5rem
-    }
-
-    .aud-card {
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      transition: all 0.25s
-    }
-
-    .aud-card:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-3px)
-    }
-
-    .aud-card-top {
-      padding: 2.5rem 2.5rem 2rem;
-      background: var(--navy);
-      position: relative;
-      overflow: hidden
-    }
-
-    .aud-card-top::after {
-      content: '';
-      position: absolute;
-      bottom: -40px;
-      right: -40px;
-      width: 120px;
-      height: 120px;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 50%
-    }
-
-    .aud-type {
-      font-size: 0.67rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.9rem;
-      display: block
-    }
-
-    .aud-title {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.2
-    }
-
-    .aud-card-body {
-      padding: 2rem 2.5rem;
-      background: var(--white)
-    }
-
-    .aud-desc {
-      font-size: 0.9rem;
-      color: var(--slate);
-      line-height: 1.75;
-      margin-bottom: 1.5rem
-    }
-
-    .aud-note {
-      font-size: 0.82rem;
-      font-style: italic;
-      color: var(--slate2)
-    }
-
-    .aud-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--navy);
-      text-decoration: none;
-      border-bottom: 2px solid var(--gold);
-      padding-bottom: 1px;
-      transition: color 0.2s, border-color 0.2s
-    }
-
-    .aud-link:hover {
-      color: var(--gold2);
-      border-color: var(--gold2)
-    }
-
-    .aud-link .arr {
-      transition: transform 0.2s
-    }
-
-    .aud-link:hover .arr {
-      transform: translateX(3px)
-    }
-
-    /* ============================================================
-   WHY TURAIS
-============================================================ */
-    .why-section {
-      background: var(--bg)
-    }
-
-    .why-intro-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      margin-bottom: 4rem
-    }
-
-    .why-proof {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem
-    }
-
-    .wp-item {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 1.5rem 1.8rem;
-      border: 1px solid var(--border);
-      display: flex;
-      gap: 1.2rem;
-      align-items: flex-start;
-      transition: box-shadow 0.2s
-    }
-
-    .wp-item:hover {
-      box-shadow: var(--shadow-md)
-    }
-
-    .wp-icon {
-      width: 42px;
-      height: 42px;
-      min-width: 42px;
-      /* background: var(--navy); */
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0
-    }
-
-    .wp-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 0.3rem
-    }
-
-    .wp-desc {
-      font-size: 0.82rem;
-      color: var(--slate);
-      line-height: 1.6
-    }
-
-    .why-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem
-    }
-
-    .ws-card {
-      background: var(--white);
-      border-radius: 14px;
-      padding: 2rem;
-      text-align: center;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-sm)
-    }
-
-    .ws-num {
-      font-family: var(--font-display);
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: var(--navy);
-      line-height: 1;
-      margin-bottom: 0.5rem
-    }
-
-    .ws-num em {
-      font-style: normal;
-      color: var(--gold)
-    }
-
-    .ws-label {
-      font-size: 0.8rem;
-      color: var(--slate2);
-      line-height: 1.5
-    }
-
-    /* ============================================================
-   COMPARISON TABLE
-============================================================ */
-    .compare-section {
-      background: var(--white)
-    }
-
-    .compare-wrap {
-      margin-top: 3.5rem;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-md)
-    }
-
-    .cmp-table {
-      width: 100%;
-      border-collapse: collapse
-    }
-
-    .cmp-table thead tr {
-      background: var(--navy)
-    }
-
-    .cmp-table th {
-      padding: 1.1rem 1.8rem;
-      text-align: left;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.5)
-    }
-
-    .cmp-table th:nth-child(3) {
-      color: var(--gold);
-      text-align: center
-    }
-
-    .cmp-table td {
-      padding: 1.1rem 1.8rem;
-      font-size: 0.88rem;
-      color: var(--slate);
-      border-bottom: 1px solid var(--border)
-    }
-
-    .cmp-table td:first-child {
-      font-weight: 600;
-      color: var(--navy);
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em
-    }
-
-    .cmp-table td:nth-child(2) {
-      color: var(--slate3)
-    }
-
-    .cmp-table td:nth-child(3) {
-      text-align: center;
-      font-weight: 600;
-      color: var(--green);
-      background: var(--green-light)
-    }
-
-    .cmp-table tr:last-child td {
-      border-bottom: none
-    }
-
-    .cmp-table tbody tr:hover {
-      background: var(--bg)
-    }
-
-    .cmp-table tbody tr:hover td:nth-child(3) {
-      background: var(--green-light)
-    }
-
-    /* ============================================================
-   FINAL CTA
-============================================================ */
-    .final-cta {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
-      padding: 7rem 5%;
-      text-align: center;
-      position: relative;
-      overflow: hidden
-    }
-
-    .final-cta::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -20%;
-      width: 700px;
-      height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(200, 150, 60, 0.1) 0%, transparent 70%);
-      pointer-events: none
-    }
-
-    .final-cta::after {
-      content: '';
-      position: absolute;
-      bottom: -50%;
-      right: -20%;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
-      pointer-events: none
-    }
-
-    .final-inner {
-      max-width: 680px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1
-    }
-
-    .final-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(200, 150, 60, 0.15);
-      border: 1px solid rgba(200, 150, 60, 0.3);
-      color: var(--gold);
-      padding: 0.4rem 0.9rem;
-      border-radius: 100px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 1.8rem
-    }
-
-    .final-h2 {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.025em;
-      color: var(--white);
-      margin-bottom: 1.2rem
-    }
-
-    .final-h2 em {
-      font-style: italic;
-      font-weight: 300;
-      color: var(--gold)
-    }
-
-    .final-sub {
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.6);
-      line-height: 1.8;
-      margin-bottom: 3rem
-    }
-
-    .final-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 1.5rem
-    }
-
-    .btn-gold {
-      background: var(--gold);
-      color: var(--white);
-      padding: 1rem 2.4rem;
-      font-size: 0.9rem;
-      font-weight: 700;
-      border-radius: 8px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.2s;
-      box-shadow: 0 4px 20px rgba(200, 150, 60, 0.35);
-      letter-spacing: 0.01em
-    }
-
-    .btn-gold:hover {
-      background: var(--gold2);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(200, 150, 60, 0.4)
-    }
-
-    .btn-ghost-white {
-      background: rgba(255, 255, 255, 0.08);
-      color: var(--white);
-      padding: 1rem 2.4rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border-radius: 8px;
-      text-decoration: none;
-      border: 1.5px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.2s
-    }
-
-    .btn-ghost-white:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.4)
-    }
-
-    .final-note {
-      font-size: 0.78rem;
-      color: rgba(255, 255, 255, 0.3);
-      letter-spacing: 0.04em
-    }
-
-    /* ============================================================
-   FOOTER
-============================================================ */
-    footer {
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      padding: 2rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center
-    }
-
-    .f-logo {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--navy)
-    }
-
-    .f-logo span {
-      color: var(--gold)
-    }
-
-    .f-copy {
-      font-size: 0.77rem;
-      color: var(--slate3)
-    }
-
-    /* ============================================================
-   SCROLL REVEAL
-============================================================ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.7s ease, transform 0.7s ease
-    }
-
-    .reveal.up {
-      opacity: 1;
-      transform: none
-    }
-
-    .reveal-r {
-      opacity: 0;
-      transform: translateX(22px);
-      transition: opacity 0.7s ease, transform 0.7s ease
-    }
-
-    .reveal-r.up {
-      opacity: 1;
-      transform: none
-    }
-
-    /* ============================================================
-   RESPONSIVE — TABLET  ≤ 1000px
-============================================================ */
-    @media(max-width:1000px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        padding: 4rem 5%
+      button {
+        cursor: pointer;
       }
-
-      .hero-card {
-        max-width: 520px
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      select:focus-visible,
+      textarea:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid #d8a84f;
+        outline-offset: 3px;
       }
-
-      .stats-inner {
-        grid-template-columns: 1fr;
-        gap: 2.5rem
+      .skip {
+        position: absolute;
+        left: 10px;
+        top: -100px;
+        z-index: 999;
+        padding: 12px;
+        background: #fff;
       }
-
-      .stat-block {
-        padding: 0;
-        text-align: left;
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding-bottom: 2rem
+      .skip:focus {
+        top: 8px;
       }
-
-      .stat-block:last-child {
-        border-bottom: none;
-        padding-bottom: 0
+      .container {
+        width: min(1160px, calc(100% - 56px));
+        margin-inline: auto;
       }
-
-      .pain-grid {
-        grid-template-columns: 1fr
+      .eyebrow {
+        display: inline-flex;
+        gap: 9px;
+        align-items: center;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-weight: 750;
+        font-size: 11px;
+        color: #ae7924;
       }
-
-      .pain-visual {
-        display: none
+      .eyebrow:before {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: var(--gold);
       }
-
-      /* hide stacked on tablet too */
-      .pain-list-mobile {
-        display: flex
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
       }
-
-      /* show flat list */
-      .offer-header {
-        grid-template-columns: 1fr
+      h1,
+      h2,
+      h3 {
+        line-height: 1.13;
+        letter-spacing: -0.045em;
       }
-
-      .offer-big {
-        grid-template-columns: 1fr
+      h1 {
+        font-size: clamp(43px, 5.5vw, 75px);
+        font-weight: 760;
+        margin-bottom: 26px;
       }
-
-      .offer-cards {
-        grid-template-columns: 1fr 1fr
+      h2 {
+        font-size: clamp(32px, 3.5vw, 49px);
+        font-weight: 760;
+        margin-bottom: 19px;
       }
-
-      .why-intro-grid {
-        grid-template-columns: 1fr
+      h3 {
+        font-size: 21px;
+        font-weight: 745;
+        margin-bottom: 13px;
       }
-
-      .why-stats {
-        grid-template-columns: 1fr 1fr
+      p {
+        color: var(--muted);
       }
-
-      .audience-grid {
-        grid-template-columns: 1fr
+      .gold {
+        color: var(--gold);
       }
-
-      .nav-link {
-        display: none
+      .muted {
+        color: var(--muted);
       }
-    }
-
-    /* ============================================================
-   RESPONSIVE — MOBILE  ≤ 640px
-============================================================ */
-    @media(max-width:640px) {
       .section {
-        padding: 4rem 5%
+        padding: 98px 0;
       }
-
-      /* Nav */
-      nav {
-        padding: 0 4%
+      .section-head {
+        max-width: 720px;
+        margin: 0 auto 39px;
+        text-align: center;
       }
-
-      .logo {
-        font-size: 1.2rem
+      .section-head p {
+        max-width: 590px;
+        margin: 0 auto;
       }
-
-      .nav-cta {
-        padding: 0.5rem 1rem;
-        font-size: 0.78rem
+      .btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        border: 1px solid transparent;
+        border-radius: 9px;
+        font-weight: 740;
+        font-size: 14px;
+        min-height: 52px;
+        padding: 0 24px;
+        transition:
+          transform 0.18s,
+          box-shadow 0.18s,
+          background 0.18s;
+        white-space: nowrap;
       }
-
-      /* Hero */
-      .hero-inner {
-        padding: 3.5rem 4% 3rem
+      .btn:hover {
+        transform: translateY(-2px);
       }
-
-      .hero-h1 {
-        font-size: 2.2rem
+      .btn svg {
+        width: 17px;
+        height: 17px;
       }
-
-      .hero-badge {
-        font-size: 0.68rem
+      .btn-navy {
+        background: var(--navy);
+        color: #fff;
+        box-shadow: 0 7px 16px rgba(23, 41, 74, 0.13);
       }
-
-      .hero-sub {
-        font-size: 0.95rem
+      .btn-navy:hover {
+        background: #233b65;
       }
-
-      .btn-primary,
-      .btn-secondary {
-        font-size: 0.82rem;
-        padding: 0.8rem 1.4rem
+      .btn-gold {
+        background: var(--gold);
+        color: #fff;
+        box-shadow: 0 7px 20px rgba(201, 146, 51, 0.19);
       }
-
-      .hero-trust {
-        gap: 1rem
+      .btn-gold:hover {
+        background: #b47f26;
       }
-
-      .trust-item {
-        font-size: 0.72rem
+      .btn-outline {
+        border-color: #d9dbe0;
+        background: #fff;
+        color: var(--navy);
       }
-
-      .hero-card {
-        border-radius: 12px
+      .btn-outline:hover {
+        background: #f7f7f8;
       }
-
-      .hero-card-price {
-        font-size: 2.4rem
+      .btn-white {
+        background: #fff;
+        color: var(--navy);
       }
-
-      /* Stats */
-      .stats-strip {
-        padding: 2.5rem 4%
+      /* navigation */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid #ebeae7;
       }
-
-      /* Pain — flat list */
-      .pain-list-mobile {
-        margin-top: 1.5rem;
-        gap: 0.75rem
+      .nav {
+        height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
       }
-
-      .pain-list-item {
-        padding: 1rem 1.2rem;
-        border-radius: 10px
+      .brand {
+        font-size: 20px;
+        letter-spacing: -0.06em;
+        font-weight: 800;
+        color: var(--navy);
+        white-space: nowrap;
       }
-
-      .pain-list-item .pain-icon {
-        /* width: 32px;
-        height: 32px;
-        min-width: 32px; */
-        width: 8px;
-        height: 8px;
-        font-size: 0.9rem
+      .brand span {
+        color: var(--gold);
       }
-
-      .pain-list-item .pain-card-text {
-        font-size: 0.84rem
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        margin-left: auto;
       }
-
-      /* Offer */
-      .offer-cards {
-        grid-template-columns: 1fr
+      .nav-links a {
+        font-size: 13px;
+        font-weight: 640;
+        color: #485570;
       }
-
-      .ob-left {
-        padding: 2rem 1.5rem
+      .nav-links a:hover {
+        color: var(--gold);
       }
-
-      .ob-items {
-        grid-template-columns: 1fr
+      .nav .btn {
+        min-height: 42px;
+        padding: 0 18px;
+        font-size: 12px;
       }
-
-      .ob-right {
-        padding: 2rem 1.5rem
+      .menu-btn {
+        display: none;
+        background: none;
+        border: 0;
+        color: var(--navy);
+        padding: 7px;
       }
-
-      .ob-price {
-        font-size: 3.5rem
+      .menu-btn svg {
+        width: 25px;
+        height: 25px;
       }
-
-      .offer-features {
-        gap: 0.5rem
+      /* hero */
+      .hero {
+        background:
+          radial-gradient(
+            ellipse 66% 90% at 92% 30%,
+            #f3eee4 0%,
+            rgba(243, 238, 228, 0) 83%
+          ),
+          linear-gradient(180deg, #fff 0%, #fbfaf7 100%);
+        padding: 89px 0 88px;
+        overflow: hidden;
       }
-
-      /* Process */
-      .process-timeline::before {
-        display: none
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.02fr 0.98fr;
+        gap: 74px;
+        align-items: center;
       }
-
-      .proc-item {
-        grid-template-columns: 48px 1fr;
-        gap: 1rem;
-        padding: 1.8rem 0
+      .hero-kicker {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        padding: 8px 14px;
+        border: 1px solid #f0e4cd;
+        border-radius: 30px;
+        background: #fbf5e8;
+        color: #a87523;
+        font-size: 11px;
+        font-weight: 730;
+        letter-spacing: 0.02em;
+        margin-bottom: 24px;
       }
-
-      .proc-dot {
+      .hero-kicker i {
+        display: block;
+        width: 6px;
+        height: 6px;
+        background: var(--gold);
+        border-radius: 50%;
+      }
+      .hero-copy .lead {
+        max-width: 530px;
+        font-size: 17px;
+        line-height: 1.75;
+        margin-bottom: 29px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 22px;
+      }
+      .hero-note {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #677181;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .hero-note svg {
+        width: 16px;
+        height: 16px;
+        color: var(--green);
+      }
+      .hero-proof {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 13px;
+        margin-top: 36px;
+        padding-top: 23px;
+        border-top: 1px solid #eae8e4;
+      }
+      .hero-proof span {
+        color: #4e5b72;
+        font-size: 12px;
+        font-weight: 690;
+        display: flex;
+        gap: 7px;
+        align-items: center;
+      }
+      .hero-proof svg {
+        width: 16px;
+        height: 16px;
+        color: var(--gold);
+      }
+      /* visual graphic, not a screenshot or fabricated client case */
+      .hero-visual {
+        position: relative;
+        min-height: 490px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .orbit {
+        position: absolute;
+        width: 480px;
+        height: 480px;
+        border-radius: 50%;
+        border: 1px solid rgba(201, 146, 51, 0.18);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .orbit:before {
+        content: "";
+        position: absolute;
+        inset: 45px;
+        border: 1px dashed rgba(201, 146, 51, 0.21);
+        border-radius: 50%;
+      }
+      .visual-sheet {
+        position: relative;
+        z-index: 2;
+        background: white;
+        border-radius: 17px;
+        box-shadow: 0 30px 70px rgba(23, 41, 74, 0.13);
+        border: 1px solid #eae9e6;
+        width: min(100%, 460px);
+        overflow: hidden;
+        transform: rotate(-1.5deg);
+      }
+      .sheet-head {
+        background: var(--navy);
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 23px;
+      }
+      .sheet-head strong {
+        display: block;
+        font-size: 15px;
+        letter-spacing: -0.03em;
+      }
+      .sheet-head small {
+        font-size: 9px;
+        color: #a8b7d4;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+      }
+      .sheet-pill {
+        border: 1px solid #5b6b88;
+        border-radius: 20px;
+        padding: 5px 9px;
+        font-size: 9px;
+        color: #d6e1f0;
+        font-weight: 650;
+      }
+      .sheet-body {
+        padding: 23px 26px 26px;
+      }
+      .sheet-title {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-weight: 780;
+        color: #70809b;
+        margin-bottom: 20px;
+      }
+      .road-item {
+        display: flex;
+        gap: 15px;
+        position: relative;
+        padding-bottom: 19px;
+        align-items: flex-start;
+      }
+      .road-item:not(:last-child):before {
+        content: "";
+        position: absolute;
+        width: 1px;
+        background: #e4e7ec;
+        left: 14px;
+        top: 29px;
+        bottom: -1px;
+      }
+      .road-item:last-child {
+        padding-bottom: 0;
+      }
+      .road-num {
+        width: 29px;
+        height: 29px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        background: #f2f5f8;
+        color: #617088;
+        font-size: 10px;
+        font-weight: 800;
+        position: relative;
+        z-index: 1;
+      }
+      .road-item.active .road-num {
+        background: #f4e2be;
+        color: #9e6b1a;
+      }
+      .road-item.done .road-num {
+        background: #e5f2ec;
+        color: var(--green);
+      }
+      .road-item strong {
+        font-size: 13px;
+        color: var(--navy);
+        display: block;
+        line-height: 1.4;
+        margin-bottom: 2px;
+      }
+      .road-item p {
+        font-size: 10.5px;
+        line-height: 1.5;
+        margin: 0;
+      }
+      .sheet-footer {
+        background: #f5f7f8;
+        padding: 13px 24px;
+        border-top: 1px solid #eeeff1;
+        color: #647187;
+        font-size: 10px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .float-chip {
+        position: absolute;
+        z-index: 3;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        background: #fff;
+        border: 1px solid #eeeae1;
+        border-radius: 12px;
+        padding: 13px 14px;
+        box-shadow: 0 11px 40px rgba(35, 42, 61, 0.12);
+        font-size: 11px;
+        font-weight: 750;
+        color: var(--navy);
+      }
+      .float-chip svg {
+        width: 18px;
+        height: 18px;
+        color: var(--green);
+      }
+      .float-a {
+        left: -30px;
+        bottom: 38px;
+        transform: rotate(3deg);
+      }
+      .float-b {
+        right: -28px;
+        top: 32px;
+        transform: rotate(3deg);
+      }
+      .float-b svg {
+        color: var(--gold);
+      }
+      /* trust band */
+      .strap {
+        background: var(--navy);
+        padding: 25px 0;
+        color: #f6f3ed;
+      }
+      .strap-inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+      .strap strong {
+        font-size: 14px;
+        font-weight: 700;
+      }
+      .strap .divider {
+        height: 18px;
+        width: 1px;
+        background: #576480;
+      }
+      .strap span {
+        font-size: 12px;
+        color: #c4ccdb;
+      }
+      /* audience cards */
+      .audience-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 21px;
+      }
+      .aud-card {
+        border: 1px solid #e9e8e4;
+        border-radius: 15px;
+        overflow: hidden;
+        background: #fff;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .aud-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+      }
+      .aud-top {
+        padding: 29px 30px 22px;
+        background: #f8f7f3;
+        border-bottom: 1px solid #ebe9e3;
+      }
+      .aud-top .no {
+        color: #bb8227;
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+        font-size: 11px;
+        font-weight: 800;
+      }
+      .aud-top h3 {
+        font-size: 25px;
+        margin: 14px 0 8px;
+      }
+      .aud-top p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      .aud-body {
+        padding: 22px 30px 29px;
+      }
+      .check-row {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        font-size: 13px;
+        font-weight: 620;
+        margin-bottom: 13px;
+        color: #46526a;
+      }
+      .check-row svg {
+        width: 17px;
+        height: 17px;
+        color: var(--green);
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .aud-body a {
+        font-size: 13px;
+        font-weight: 800;
+        color: var(--navy);
+        border-bottom: 2px solid var(--gold);
+        padding-bottom: 3px;
+        display: inline-block;
+        margin-top: 10px;
+      }
+      /* pain strip */
+      .problem {
+        background: var(--sand);
+      }
+      .problem-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 75px;
+        align-items: center;
+      }
+      .problem h2 {
+        max-width: 460px;
+      }
+      .problem p {
+        max-width: 480px;
+      }
+      .problem-list {
+        display: grid;
+        gap: 12px;
+      }
+      .problem-item {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        padding: 18px 20px;
+        border: 1px solid #e7e4dc;
+        border-radius: 10px;
+        background: #fff;
+      }
+      .problem-icon {
+        width: 43px;
+        height: 43px;
+        border-radius: 10px;
+        background: #f8f0e0;
+        display: grid;
+        place-items: center;
+        flex: none;
+        color: #b27c24;
+      }
+      .problem-icon svg {
+        height: 22px;
+        width: 22px;
+      }
+      .problem-item strong {
+        font-size: 14px;
+        display: block;
+        color: var(--navy);
+      }
+      .problem-item small {
+        font-size: 12px;
+        color: #7d8798;
+      }
+      /* services */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .service {
+        border: 1px solid var(--line);
+        padding: 28px 26px;
+        border-radius: 14px;
+        background: #fff;
+        min-height: 262px;
+      }
+      .service-index {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 27px;
+      }
+      .service-index > span {
+        font-size: 12px;
+        font-weight: 780;
+        color: var(--gold);
+      }
+      .service-icon {
+        width: 47px;
+        height: 47px;
+        background: #f5f1e9;
+        border-radius: 11px;
+        color: var(--navy);
+        display: grid;
+        place-items: center;
+      }
+      .service-icon svg {
+        width: 23px;
+        height: 23px;
+      }
+      .service h3 {
+        font-size: 22px;
+      }
+      .service p {
+        font-size: 13px;
+        line-height: 1.8;
+        margin: 0;
+      }
+      .service-note {
+        margin-top: 22px;
+        border: 1px solid #e6e8ed;
+        border-radius: 12px;
+        padding: 18px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        background: #fafbfc;
+      }
+      .service-note strong {
+        display: block;
+        font-size: 14px;
+      }
+      .service-note span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 3px;
+      }
+      .service-note .arrow {
+        color: var(--gold);
+        font-size: 24px;
+      }
+      /* differences */
+      .reason {
+        background: var(--navy);
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+      .reason:before {
+        content: "";
+        position: absolute;
+        width: 520px;
+        height: 520px;
+        border: 1px solid rgba(223, 176, 86, 0.16);
+        border-radius: 50%;
+        right: -180px;
+        top: -160px;
+      }
+      .reason-grid {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1.05fr;
+        gap: 85px;
+        align-items: center;
+      }
+      .reason .eyebrow {
+        color: #e8bc70;
+      }
+      .reason h2 {
+        color: #fff;
+      }
+      .reason p {
+        color: #cbd5e3;
+        max-width: 500px;
+      }
+      .reason-list {
+        display: grid;
+        gap: 13px;
+      }
+      .reason-item {
+        display: flex;
+        gap: 15px;
+        align-items: flex-start;
+        padding: 17px;
+        border: 1px solid #3e506e;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 11px;
+      }
+      .reason-item svg {
+        color: var(--gold2);
+        width: 21px;
+        height: 21px;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .reason-item strong {
+        font-size: 14px;
+        display: block;
+        color: #fff;
+      }
+      .reason-item span {
+        font-size: 12px;
+        color: #c4cee0;
+        line-height: 1.7;
+        display: block;
+        margin-top: 4px;
+      }
+      /* how it works */
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        position: relative;
+      }
+      .steps:before {
+        content: "";
+        position: absolute;
+        left: 15%;
+        right: 15%;
+        top: 23px;
+        height: 1px;
+        border-top: 1px dashed #d0d5da;
+      }
+      .step {
+        position: relative;
+        text-align: center;
+        padding: 0 12px;
+      }
+      .step-number {
         width: 48px;
         height: 48px;
-        font-size: 0.95rem
+        display: grid;
+        place-items: center;
+        border: 1px solid #ddc391;
+        border-radius: 50%;
+        background: #fff;
+        color: #b37c21;
+        font-size: 13px;
+        font-weight: 790;
+        margin: 0 auto 26px;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 4px 12px #ece8db;
       }
-
-      .proc-title {
-        font-size: 1.1rem
+      .step h3 {
+        font-size: 19px;
+        margin-bottom: 12px;
       }
-
-      .proc-desc {
-        font-size: 0.85rem
+      .step p {
+        font-size: 13px;
+        line-height: 1.85;
       }
-
-      /* Audience */
-      .aud-card-top {
-        padding: 2rem 1.5rem 1.5rem
+      .step small {
+        color: #a97826;
+        font-weight: 750;
+        font-size: 11px;
+        letter-spacing: 0.03em;
+        display: block;
+        margin-top: 10px;
       }
-
-      .aud-card-body {
-        padding: 1.5rem
-      }
-
-      .aud-title {
-        font-size: 1.25rem
-      }
-
-      /* Why */
-      .why-stats {
-        grid-template-columns: 1fr
-      }
-
-      .wp-item {
-        padding: 1.2rem
-      }
-
-      /* Compare — horizontal scroll */
-      .compare-wrap {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        border-radius: 12px
-      }
-
-      .cmp-table {
-        min-width: 560px
-      }
-
-      .cmp-table th,
-      .cmp-table td {
-        padding: 0.9rem 1rem;
-        font-size: 0.8rem
-      }
-
-      /* Final CTA */
-      .final-cta {
-        padding: 4.5rem 4%
-      }
-
-      .final-h2 {
-        font-size: 2rem
-      }
-
-      .final-sub {
-        font-size: 0.9rem
-      }
-
-      .btn-gold,
-      .btn-ghost-white {
-        font-size: 0.85rem;
-        padding: 0.9rem 1.8rem
-      }
-
-      .final-actions {
-        flex-direction: column;
-        align-items: center
-      }
-
-      /* Footer */
-      footer {
-        flex-direction: column;
-        gap: 0.5rem;
+      .steps-disclaimer {
+        margin: 37px auto 0;
+        max-width: 850px;
+        border: 1px solid #efe6d3;
+        background: #faf6ec;
+        padding: 15px 20px;
+        border-radius: 9px;
+        color: #806537;
+        font-size: 12px;
         text-align: center;
-        padding: 1.5rem 4%
       }
-
-      /* Headings */
-      h2.s-title {
-        font-size: 1.8rem
+      /* example deliverable */
+      .preview-section {
+        background: #f9f8f5;
       }
-    }
-
-    /* ============================================================
-   RESPONSIVE — VERY SMALL  ≤ 380px
-============================================================ */
-    @media(max-width:380px) {
-      .hero-h1 {
-        font-size: 1.9rem
+      .preview-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 72px;
+        align-items: center;
       }
-
-      .hero-actions {
-        flex-direction: column;
-        align-items: flex-start
+      .preview-grid p {
+        max-width: 485px;
       }
-
-      .btn-primary,
-      .btn-secondary {
+      .sample-sheet {
+        background: #fff;
+        border: 1px solid #ebe8e0;
+        box-shadow: var(--shadow);
+        padding: 27px;
+        border-radius: 13px;
+        transform: rotate(1deg);
+      }
+      .sample-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        border-bottom: 1px solid #e7e8ec;
+        padding-bottom: 19px;
+      }
+      .sample-top strong {
+        font-size: 15px;
+        color: var(--navy);
+      }
+      .sample-top small {
+        display: block;
+        font-size: 10px;
+        color: #8790a0;
+      }
+      .sample-label {
+        background: #f9f0e2;
+        border-radius: 6px;
+        padding: 7px 10px;
+        color: #a67625;
+        font-size: 10px;
+        font-weight: 750;
+      }
+      .sample-block {
+        margin-top: 18px;
+      }
+      .sample-block > strong {
+        font-size: 11px;
+        color: #65748b;
+        letter-spacing: 0.04em;
+        display: block;
+        margin-bottom: 9px;
+      }
+      .sample-line {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 9px 0;
+        border-bottom: 1px dashed #e9eaf0;
+        font-size: 12px;
+        color: #3d4a63;
+      }
+      .sample-line svg {
+        width: 15px;
+        height: 15px;
+        color: var(--green);
+      }
+      .sample-tag {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+        margin-top: 13px;
+      }
+      .sample-tag span {
+        font-size: 10px;
+        color: #6d788d;
+        border: 1px solid #e8eaf0;
+        border-radius: 16px;
+        padding: 5px 9px;
+      }
+      .preview-caption {
+        text-align: right;
+        font-size: 10px;
+        color: #8790a0;
+        margin-top: 12px;
+      }
+      /* faq */
+      .faq-grid {
+        display: grid;
+        grid-template-columns: 0.75fr 1.25fr;
+        gap: 90px;
+      }
+      .faq-list {
+        border-top: 1px solid var(--line);
+      }
+      .faq-list details {
+        border-bottom: 1px solid var(--line);
+        padding: 20px 0;
+      }
+      .faq-list summary {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        font-weight: 725;
+        font-size: 14px;
+        color: var(--navy);
+      }
+      .faq-list summary::-webkit-details-marker {
+        display: none;
+      }
+      .faq-list summary:after {
+        content: "+";
+        font-size: 24px;
+        font-weight: 400;
+        color: #bd862d;
+        line-height: 1;
+      }
+      .faq-list details[open] summary:after {
+        content: "−";
+      }
+      .faq-list details p {
+        font-size: 13px;
+        line-height: 1.85;
+        padding: 12px 30px 0 0;
+        margin: 0;
+      }
+      /* enquiry */
+      .contact-section {
+        background: linear-gradient(120deg, #182b4c 0%, #233b62 100%);
+        color: #fff;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: 78px;
+        align-items: center;
+      }
+      .contact-section .eyebrow {
+        color: #e2b15a;
+      }
+      .contact-section h2 {
+        color: #fff;
+      }
+      .contact-section .contact-copy > p {
+        color: #c6d0df;
+        max-width: 430px;
+      }
+      .contact-steps {
+        margin-top: 29px;
+        display: grid;
+        gap: 15px;
+      }
+      .contact-steps span {
+        display: flex;
+        gap: 12px;
+        color: #d6deeb;
+        font-size: 13px;
+        align-items: center;
+      }
+      .contact-steps svg {
+        width: 18px;
+        height: 18px;
+        color: #e7b767;
+        flex-shrink: 0;
+      }
+      .enquiry-card {
+        background: #fff;
+        color: var(--navy);
+        border-radius: 16px;
+        padding: 31px;
+        box-shadow: 0 24px 60px #111d3525;
+      }
+      .enquiry-card h3 {
+        font-size: 24px;
+        margin: 0 0 5px;
+      }
+      .enquiry-card > p {
+        font-size: 12px;
+        margin: 0 0 22px;
+      }
+      .field-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      .field {
+        margin-bottom: 15px;
+      }
+      .field label {
+        display: block;
+        font-size: 12px;
+        font-weight: 750;
+        color: #3e4c62;
+        margin-bottom: 7px;
+      }
+      .field label .optional {
+        color: #8e96a5;
+        font-weight: 500;
+      }
+      .field input,
+      .field select,
+      .field textarea {
         width: 100%;
-        justify-content: center
+        padding: 12px 13px;
+        border: 1px solid #dfe2e7;
+        border-radius: 8px;
+        background: #fff;
+        color: var(--ink);
+        outline: none;
+        transition: border 0.15s;
+        font-size: 13px;
       }
-
-      .hero-card-price {
-        font-size: 2rem
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 3px #dcb66c24;
       }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- ═══════════════════════ NAV ═══════════════════════ -->
-  <nav id="navbar">
-    <div class="logo">Turais Solutions<span>.</span></div>
-    <div class="nav-links">
-      <a class="nav-link" href="#pain">The Problem</a>
-      <a class="nav-link" href="#solution">Our Solution</a>
-      <a class="nav-link" href="#process">Process</a>
-      <a class="nav-link" href="#compare">Why Us</a>
-      <!-- <a class="nav-cta" href="/payment">Book ₹499 Call</a> -->
-      <a class="nav-cta">Book ₹499 Call</a>
-    </div>
-  </nav>
-
-  <!-- ═══════════════════════ HERO ═══════════════════════ -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-left">
-        <div class="hero-badge">App Development Consultation — Turais Solutions</div>
-        <h1 class="hero-h1">
-          Your App Idea Is Solid.
-          <em>The Execution Is Not.</em>
-        </h1>
-        <p class="hero-sub">
-          Delays. Budget overruns. <strong>Developers who say yes to everything and deliver nothing.</strong> The
-          problem isn't your idea — it's the absence of a clear plan before coding starts.
-        </p>
-        <div class="hero-actions">
-          <!-- <a class="btn-primary" href="/payment">Book ₹499 Clarity Call <span class="arrow">→</span></a> -->
-          <a class="btn-primary">Book ₹499 Clarity Call <span class="arrow">→</span></a>
-          <a class="btn-secondary" href="#process">See How It Works</a>
-        </div>
-        <!-- <div class="hero-trust">
-        <div class="trust-item"><div class="icon">✓</div> NDA signed first</div>
-        <div class="trust-item"><div class="icon">✓</div> No agency commissions</div>
-        <div class="trust-item"><div class="icon">✓</div> 9+ years expertise</div>
-      </div> -->
+      .field input::placeholder,
+      .field textarea::placeholder {
+        color: #9aa2ae;
+      }
+      .field textarea {
+        resize: vertical;
+        min-height: 77px;
+      }
+      .fineprint {
+        font-size: 11px !important;
+        color: #8993a2;
+        margin: 12px 0 0 !important;
+      }
+      .enquiry-card .btn {
+        width: 100%;
+      }
+      .form-message {
+        display: none;
+        margin-top: 15px;
+        border: 1px solid #e4e6eb;
+        background: #f7f8fa;
+        padding: 14px;
+        border-radius: 10px;
+        color: #4c5970;
+        font-size: 12px;
+      }
+      .form-message.visible {
+        display: block;
+      }
+      .form-message strong {
+        color: var(--navy);
+        display: block;
+        margin-bottom: 7px;
+      }
+      .form-message textarea {
+        width: 100%;
+        height: 110px;
+        border: 1px solid #dde2ea;
+        padding: 9px;
+        border-radius: 7px;
+        font-size: 11px;
+        resize: vertical;
+      }
+      .copy-btn {
+        padding: 9px 13px;
+        background: var(--navy);
+        color: white;
+        border-radius: 7px;
+        border: 0;
+        font-size: 12px;
+        font-weight: 700;
+        margin-top: 7px;
+      }
+      .site-footer {
+        padding: 30px 0;
+        background: #101d35;
+        color: #c5ceda;
+      }
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 25px;
+      }
+      .site-footer .brand {
+        color: #fff;
+        font-size: 18px;
+      }
+      .footer-inner p {
+        font-size: 11px;
+        color: #9faec4;
+        margin: 4px 0 0;
+      }
+      .footer-links {
+        display: flex;
+        gap: 20px;
+        font-size: 12px;
+        color: #b9c4d6;
+      }
+      .mobile-sticky {
+        display: none;
+      }
+      @media (max-width: 1060px) {
+        .hero-grid {
+          gap: 35px;
+        }
+        .float-a {
+          left: -9px;
+        }
+        .float-b {
+          right: -5px;
+        }
+        .container {
+          width: min(100% - 44px, 1160px);
+        }
+        .reason-grid,
+        .contact-grid {
+          gap: 45px;
+        }
+      }
+      @media (max-width: 860px) {
+        .nav-links {
+          gap: 15px;
+        }
+        .nav-links a {
+          font-size: 12px;
+        }
+        .nav .btn {
+          display: none;
+        }
+        .hero-grid,
+        .problem-grid,
+        .reason-grid,
+        .preview-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 44px;
+        }
+        .hero {
+          padding: 60px 0;
+        }
+        .hero-visual {
+          min-height: 450px;
+        }
+        .problem h2 {
+          max-width: 700px;
+        }
+        .reason p {
+          max-width: 700px;
+        }
+        .services-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .service:nth-child(3) {
+          grid-column: span 2;
+          min-height: auto;
+        }
+        .faq-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        .section {
+          padding: 76px 0;
+        }
+        .contact-grid {
+          max-width: 690px;
+          margin: auto;
+        }
+        .preview-grid {
+          max-width: 680px;
+          margin: auto;
+        }
+        .preview-grid p {
+          max-width: 650px;
+        }
+      }
+      @media (max-width: 620px) {
+        html {
+          scroll-padding-top: 72px;
+        }
+        .container {
+          width: calc(100% - 36px);
+        }
+        .nav {
+          height: 66px;
+        }
+        .brand {
+          font-size: 19px;
+        }
+        .menu-btn {
+          display: block;
+        }
+        .nav-links {
+          display: none;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 66px;
+          padding: 18px;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          background: #fff;
+          box-shadow: 0 18px 28px rgba(23, 41, 74, 0.08);
+          border-bottom: 1px solid var(--line);
+        }
+        .nav-links.open {
+          display: flex;
+        }
+        .nav-links a {
+          padding: 13px 8px;
+          font-size: 14px;
+        }
+        .hero {
+          padding: 50px 0 63px;
+        }
+        .hero-kicker {
+          font-size: 10px;
+          padding: 7px 11px;
+        }
+        h1 {
+          font-size: 43px;
+          margin-bottom: 21px;
+        }
+        h2 {
+          font-size: 34px;
+        }
+        .hero-copy .lead {
+          font-size: 15px;
+        }
+        .hero-actions .btn {
+          width: 100%;
+        }
+        .hero-proof {
+          gap: 12px 17px;
+        }
+        .hero-proof span {
+          font-size: 11px;
+        }
+        .hero-visual {
+          min-height: 395px;
+        }
+        .orbit {
+          width: 360px;
+          height: 360px;
+        }
+        .visual-sheet {
+          width: 94%;
+          transform: rotate(-1deg);
+        }
+        .sheet-body {
+          padding: 19px;
+        }
+        .sheet-head {
+          padding: 17px 19px;
+        }
+        .float-chip {
+          font-size: 9px;
+          padding: 9px;
+        }
+        .float-a {
+          left: 0;
+          bottom: 4px;
+        }
+        .float-b {
+          right: 1px;
+          top: 3px;
+        }
+        .strap-inner {
+          gap: 8px 15px;
+        }
+        .strap .divider {
+          display: none;
+        }
+        .strap span {
+          font-size: 11px;
+        }
+        .strap strong {
+          font-size: 13px;
+        }
+        .section {
+          padding: 66px 0;
+        }
+        .section-head {
+          margin-bottom: 29px;
+        }
+        .audience-grid,
+        .services-grid,
+        .steps {
+          grid-template-columns: 1fr;
+        }
+        .aud-top,
+        .aud-body {
+          padding: 22px;
+        }
+        .aud-top h3 {
+          font-size: 22px;
+        }
+        .service:nth-child(3) {
+          grid-column: auto;
+        }
+        .service {
+          min-height: initial;
+          padding: 24px;
+        }
+        .service-index {
+          margin-bottom: 17px;
+        }
+        .steps {
+          gap: 23px;
+        }
+        .steps:before {
+          display: none;
+        }
+        .step {
+          text-align: left;
+          display: grid;
+          grid-template-columns: 42px 1fr;
+          column-gap: 15px;
+          padding: 0;
+        }
+        .step-number {
+          width: 42px;
+          height: 42px;
+          grid-row: span 4;
+          margin: 0;
+        }
+        .step h3 {
+          margin-bottom: 5px;
+        }
+        .step p {
+          margin-bottom: 1px;
+        }
+        .step small {
+          margin-top: 7px;
+        }
+        .sample-sheet {
+          padding: 19px;
+        }
+        .reason-item {
+          padding: 15px;
+        }
+        .field-grid {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+        .enquiry-card {
+          padding: 24px 19px;
+        }
+        .footer-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .footer-links {
+          flex-wrap: wrap;
+        }
+        .mobile-sticky {
+          display: block;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: #fff;
+          border-top: 1px solid #e9e9eb;
+          padding: 10px 18px max(10px, env(safe-area-inset-bottom));
+          z-index: 49;
+          box-shadow: 0 -10px 22px rgba(0, 0, 0, 0.06);
+        }
+        .mobile-sticky a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--gold);
+          border-radius: 8px;
+          color: #fff;
+          min-height: 45px;
+          font-size: 13px;
+          font-weight: 760;
+        }
+        .site-footer {
+          padding-bottom: 100px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *:before,
+        *:after {
+          scroll-behavior: auto !important;
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      style="position: absolute; width: 0; height: 0; overflow: hidden"
+    >
+      <symbol id="check" viewBox="0 0 24 24">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m5 12 4 4L19 6"
+        />
+      </symbol>
+      <symbol id="arrow" viewBox="0 0 24 24">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M5 12h14m-6-6 6 6-6 6"
+        />
+      </symbol>
+      <symbol id="shield" viewBox="0 0 24 24">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m12 22 1.6-.7C19 19 21 15 21 10V5l-9-3-9 3v5c0 5 2 9 7.4 11.3L12 22Zm-4-11 3 3 5-5"
+        />
+      </symbol>
+      <symbol id="file" viewBox="0 0 24 24">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Zm0 0v6h6M8 13h8M8 17h6"
+        />
+      </symbol>
+      <symbol id="users" viewBox="0 0 24 24">
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m7-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm13 10v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"
+        />
+      </symbol>
+      <symbol id="clock" viewBox="0 0 24 24">
+        <circle
+          cx="12"
+          cy="12"
+          r="9"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+        <path
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          d="M12 7v5l3.5 2"
+        />
+      </symbol>
+      <symbol id="search" viewBox="0 0 24 24">
+        <circle
+          cx="10.5"
+          cy="10.5"
+          r="6.5"
+          stroke="currentColor"
+          fill="none"
+          stroke-width="1.8"
+        />
+        <path
+          d="m16 16 5 5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        />
+      </symbol>
+      <symbol id="chart" viewBox="0 0 24 24">
+        <path
+          d="M4 19V5M4 19h16M8 15l4-4 3 2 5-7"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </symbol>
+      <symbol id="menu" viewBox="0 0 24 24">
+        <path
+          d="M4 6h16M4 12h16M4 18h16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      </symbol>
+      <symbol id="message" viewBox="0 0 24 24">
+        <path
+          d="M21 11.5A8.5 8.5 0 0 1 12.5 20a9 9 0 0 1-4-.9L3 21l1.9-5.5a9 9 0 0 1-.9-4 8.5 8.5 0 0 1 17 0Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linejoin="round"
+        />
+      </symbol>
+    </svg>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="#top" aria-label="Turais Solutions, home"
+          >Turais Solutions<span>.</span></a
+        >
+        <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+          <a href="#who">Who we help</a><a href="#services">Our services</a
+          ><a href="#process">How it works</a><a href="#faq">FAQs</a>
+        </nav>
+        <a class="btn btn-navy" href="#enquiry"
+          >Request a free call
+          <svg aria-hidden="true"><use href="#arrow" /></svg
+        ></a>
+        <button
+          class="menu-btn"
+          id="menuButton"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="navLinks"
+        >
+          <svg aria-hidden="true"><use href="#menu" /></svg>
+        </button>
       </div>
-      <div class="hero-card">
-        <div class="hero-card-header">
-          <div class="hero-card-tag">Clarity Call · One-time</div>
-          <div class="hero-card-price">
-            <sup>₹</sup>499
-            <span class="was">₹5,000</span>
+    </header>
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <div class="hero-kicker">
+              <i></i> Independent app guidance for founders across India
+            </div>
+            <h1>
+              Planning to build an app?
+              <span class="gold">Start with a clear plan.</span>
+            </h1>
+            <p class="lead">
+              You know your business. We help with the technical side — from
+              planning your app and choosing developers to checking that the
+              work is going as agreed.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-navy" href="#enquiry"
+                >Request a free 15-minute call
+                <svg aria-hidden="true"><use href="#arrow" /></svg></a
+              ><a class="btn btn-outline" href="#services">See how we help</a>
+            </div>
+            <div class="hero-note">
+              <svg aria-hidden="true"><use href="#check" /></svg> No coding
+              knowledge needed. No obligation to buy.
+            </div>
+            <div class="hero-proof">
+              <span
+                ><svg><use href="#check" /></svg> Independent guidance</span
+              ><span
+                ><svg><use href="#check" /></svg> Plain-English advice</span
+              ><span
+                ><svg><use href="#check" /></svg> For new &amp; ongoing
+                projects</span
+              >
+            </div>
           </div>
-          <div class="hero-card-sub">LIMITED — First 10 Founders · Full BA consultation</div>
-        </div>
-        <div class="hero-card-body">
-          <div class="hc-list">
-            <div class="hc-item">
-              <div class="hc-check">✓</div>
-              <div class="hc-text">We understand your idea or current project situation — no jargon, plain conversation
+          <div
+            class="hero-visual"
+            role="img"
+            aria-label="Illustration of the Turais guidance journey: understand the app idea, prepare a plan, compare developers and review delivery milestones"
+          >
+            <div class="orbit"></div>
+            <div class="float-chip float-b">
+              <svg><use href="#shield" /></svg> Your decisions. Our guidance.
+            </div>
+            <div class="visual-sheet">
+              <div class="sheet-head">
+                <div>
+                  <small>TURAIS CLARITY</small
+                  ><strong>Your app. A clearer way forward.</strong>
+                </div>
+                <div class="sheet-pill">Example journey</div>
+              </div>
+              <div class="sheet-body">
+                <div class="sheet-title">From idea to execution</div>
+                <div class="road-item done">
+                  <div class="road-num">
+                    <svg width="15" height="15"><use href="#check" /></svg>
+                  </div>
+                  <div>
+                    <strong>Understand your idea</strong>
+                    <p>What you want to build and why it matters</p>
+                  </div>
+                </div>
+                <div class="road-item active">
+                  <div class="road-num">02</div>
+                  <div>
+                    <strong>Prepare a clear app plan</strong>
+                    <p>Features, screens, priorities and expectations</p>
+                  </div>
+                </div>
+                <div class="road-item">
+                  <div class="road-num">03</div>
+                  <div>
+                    <strong>Evaluate development options</strong>
+                    <p>Compare proposals and clarify deliverables</p>
+                  </div>
+                </div>
+                <div class="road-item">
+                  <div class="road-num">04</div>
+                  <div>
+                    <strong>Review work as it progresses</strong>
+                    <p>Track milestones and flag issues early</p>
+                  </div>
+                </div>
+              </div>
+              <div class="sheet-footer">
+                <span>Clarity before commitment</span
+                ><span>Illustrative process · not a real project</span>
               </div>
             </div>
-            <div class="hc-item">
-              <div class="hc-check">✓</div>
-              <div class="hc-text">We identify exactly where the breakdown is happening in your development</div>
-            </div>
-            <div class="hc-item">
-              <div class="hc-check">✓</div>
-              <div class="hc-text">You leave knowing your next three steps — clearly, with no confusion</div>
-            </div>
-            <div class="hc-item">
-              <div class="hc-check">✓</div>
-              <div class="hc-text">Basic guidance on how to evaluate and select the right development agency</div>
-            </div>
-            <div class="hc-item">
-              <div class="hc-check">✓</div>
-              <div class="hc-text">NDA signed before the call — your idea is 100% protected</div>
-            </div>
-          </div>
-          <!-- REPLACE href="#" WITH YOUR PAYMENT / CALENDLY LINK -->
-          <!-- <a class="hero-card-cta" href="/payment">Yes, I Want Clarity — Book Now →</a> -->
-          <a class="hero-card-cta">Yes, I Want Clarity — Book Now →</a>
-        </div>
-        <div class="hero-card-footer">
-          <div class="dot"></div>
-          Limited to 10 founders this month at this price
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════ STATS ═══════════════════════ -->
-  <div class="stats-strip">
-    <div class="stats-inner">
-      <div class="stat-block reveal">
-        <div class="stat-num">66%</div>
-        <div class="stat-label">of software projects face delays or budget overruns</div>
-      </div>
-      <div class="stat-block reveal">
-        <div class="stat-num">189%</div>
-        <div class="stat-label">average cost overrun when scope isn't defined upfront</div>
-      </div>
-      <div class="stat-block reveal">
-        <div class="stat-num">57%</div>
-        <div class="stat-label">of failures trace back to one root cause — miscommunication</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════ PAIN ═══════════════════════ -->
-  <section class="section pain-section" id="pain">
-    <div class="section-inner">
-      <div class="pain-grid">
-
-        <div class="reveal">
-          <div class="section-eyebrow">Sound familiar?</div>
-          <h2 class="s-title">Does This Sound Like <em>Your Situation?</em></h2>
-          <p class="s-sub">You're not alone. This is what happens when development starts without a proper blueprint.
-            It's not the developer's fault. It's not yours. It's what happens when business vision and technical
-            execution speak different languages.</p>
-          <br>
-          <a class="btn-primary" href="#solution" style="margin-top:0.5rem">I Need Help With This <span
-              class="arrow">→</span></a>
-
-          <!-- Mobile flat list (shown ≤1000px, hidden on desktop) -->
-          <div class="pain-list-mobile">
-            <div class="pain-list-item">
-              <!-- <div class="pain-icon">😤</div> -->
-              <div class="pain-icon">
-                <img src="chasing_your_dev.png" alt="Chasing your developer" class="pain-icon">
-              </div>
-              <div class="pain-card-text"><strong>Chasing your developer</strong>You hired a developer with confidence —
-                now you're chasing updates every week with nothing to show</div>
-            </div>
-            <div class="pain-list-item">
-              <!-- <div class="pain-icon">💸</div> -->
-              <div class="pain-icon">
-                <img src="budget_bleeding_out.png" alt="Budget bleeding out" class="pain-icon">
-              </div>
-              <div class="pain-card-text"><strong>Budget bleeding out</strong>The timeline has already crossed by
-                months. The budget is bleeding with no end in sight</div>
-            </div>
-            <div class="pain-list-item">
-              <!-- <div class="pain-icon">🤷</div> -->
-              <div class="pain-icon">
-                <img src="build_the_wrong_thing.png" alt="Built the wrong thing" class="pain-icon">
-              </div>
-              <div class="pain-card-text"><strong>Built the wrong thing</strong>You don't know if what's being built is
-                even what you asked for</div>
-            </div>
-            <div class="pain-list-item">
-              <!-- <div class="pain-icon">🔥</div> -->
-              <div class="pain-icon">
-                <img src="scope_creep_nightmare.png" alt="Scope creep nightmare" class="pain-icon">
-              </div>
-              <div class="pain-card-text"><strong>Scope creep nightmare</strong>Every new requirement causes a fight or
-                a fresh invoice from the dev team</div>
-            </div>
-            <div class="pain-list-item">
-              <!-- <div class="pain-icon">😰</div> -->
-              <div class="pain-icon">
-                <img src="completely_stuck.png" alt="Completely stuck" class="pain-icon">
-              </div>
-              <div class="pain-card-text"><strong>Completely stuck</strong>You're stuck — can't move forward, afraid to
-                start over</div>
+            <div class="float-chip float-a">
+              <svg><use href="#check" /></svg> Make informed decisions
             </div>
           </div>
         </div>
+      </section>
+      <div class="strap">
+        <div class="container strap-inner">
+          <strong>Not an app development agency.</strong>
+          <div class="divider"></div>
+          <span
+            >We help you make better decisions about the people building your
+            app.</span
+          >
+        </div>
+      </div>
 
-        <!-- Desktop stacked cards (hidden ≤1000px) -->
-        <div class="pain-visual">
-          <div class="pain-card-stack reveal-r">
-            <div class="pain-card">
-              <!-- <div class="pain-icon">😤</div> -->
-              <div class="pain-icon">
-                <img src="chasing_your_dev.png" alt="Chasing Developer" class="pain-icon">
+      <section class="section" id="who">
+        <div class="container">
+          <div class="section-head">
+            <div class="eyebrow">Who we help</div>
+            <h2>
+              Where are you in your <span class="gold">app journey?</span>
+            </h2>
+            <p>
+              Whether you're starting with an idea or dealing with a project
+              that's already underway, we can help you understand the next step.
+            </p>
+          </div>
+          <div class="audience-grid">
+            <article class="aud-card">
+              <div class="aud-top">
+                <span class="no">Situation 01 · Before development</span>
+                <h3>“I have an app idea. Where do I begin?”</h3>
+                <p>
+                  You have a business idea, but you're not sure what the app
+                  should include, what it might take to build, or how to select
+                  a developer.
+                </p>
               </div>
-              <div class="pain-card-text"><strong>Chasing your developer</strong>You hired a developer with confidence —
-                now you're chasing updates every week with nothing to show</div>
+              <div class="aud-body">
+                <div class="check-row">
+                  <svg><use href="#check" /></svg> Turn your idea into a
+                  practical project plan
+                </div>
+                <div class="check-row">
+                  <svg><use href="#check" /></svg> Decide which features matter
+                  first
+                </div>
+                <div class="check-row">
+                  <svg><use href="#check" /></svg> Know what to ask before
+                  hiring a developer
+                </div>
+                <a href="#enquiry">Let's discuss your idea →</a>
+              </div>
+            </article>
+            <article class="aud-card">
+              <div class="aud-top">
+                <span class="no">Situation 02 · During development</span>
+                <h3>“My app project is delayed or confusing.”</h3>
+                <p>
+                  You've hired a developer or agency, but progress is hard to
+                  measure, changes keep coming, or you're unsure whether the
+                  work matches the agreement.
+                </p>
+              </div>
+              <div class="aud-body">
+                <div class="check-row">
+                  <svg><use href="#check" /></svg> Understand what's completed
+                  and what's pending
+                </div>
+                <div class="check-row">
+                  <svg><use href="#check" /></svg> Review scope, milestones and
+                  communication
+                </div>
+                <div class="check-row">
+                  <svg><use href="#check" /></svg> Decide on a realistic way
+                  forward
+                </div>
+                <a href="#enquiry">Let's review your situation →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section problem" id="problems">
+        <div class="container problem-grid">
+          <div>
+            <div class="eyebrow">Why clarity matters</div>
+            <h2>
+              App development can get expensive when
+              <span class="gold">things aren't clear.</span>
+            </h2>
+            <p>
+              When an idea, quotation and final product mean different things to
+              different people, even a promising project can become difficult to
+              manage.
+            </p>
+            <a class="btn btn-navy" href="#enquiry"
+              >Talk to us about your project <svg><use href="#arrow" /></svg
+            ></a>
+          </div>
+          <div class="problem-list">
+            <div class="problem-item">
+              <div class="problem-icon">
+                <svg><use href="#file" /></svg>
+              </div>
+              <div>
+                <strong>“I don't know what should be in the quotation.”</strong
+                ><small
+                  >Unclear requirements make proposals hard to compare.</small
+                >
+              </div>
             </div>
-            <div class="pain-card">
-              <!-- <div class="pain-icon">💸</div> -->
-              <div class="pain-icon">
-                <img src="budget_bleeding_out.png" alt="Budget bleeding out" class="pain-icon">
+            <div class="problem-item">
+              <div class="problem-icon">
+                <svg><use href="#clock" /></svg>
               </div>
-              <div class="pain-card-text"><strong>Budget bleeding out</strong>The timeline has already crossed by
-                months. The budget is bleeding with no end in sight</div>
+              <div>
+                <strong>“The developer keeps asking for more time.”</strong
+                ><small
+                  >Without milestones, progress is difficult to judge.</small
+                >
+              </div>
             </div>
-            <div class="pain-card">
-              <!-- <div class="pain-icon">🤷</div> -->
-              <div class="pain-icon">
-                <img src="build_the_wrong_thing.png" alt="Built the wrong thing" class="pain-icon">
+            <div class="problem-item">
+              <div class="problem-icon">
+                <svg><use href="#chart" /></svg>
               </div>
-              <div class="pain-card-text"><strong>Built the wrong thing</strong>You don't know if what's being built is
-                even what you asked for</div>
+              <div>
+                <strong>“The budget keeps increasing.”</strong
+                ><small>Late changes and assumptions can add costs.</small>
+              </div>
             </div>
-            <div class="pain-card">
-              <!-- <div class="pain-icon">🔥</div> -->
-              <div class="pain-icon">
-                <img src="scope_creep_nightmare.png" alt="Scope creep nightmare" class="pain-icon">
+            <div class="problem-item">
+              <div class="problem-icon">
+                <svg><use href="#search" /></svg>
               </div>
-              <div class="pain-card-text"><strong>Scope creep nightmare</strong>Every new requirement causes a fight or
-                a fresh invoice from the dev team</div>
-            </div>
-            <div class="pain-card">
-              <!-- <div class="pain-icon">😰</div> -->
-              <div class="pain-icon">
-                <img src="completely_stuck.png" alt="Completely stuck" class="pain-icon">
+              <div>
+                <strong
+                  >“I don't know if the app is being built correctly.”</strong
+                ><small
+                  >You need a clearer way to review what is delivered.</small
+                >
               </div>
-              <div class="pain-card-text"><strong>Completely stuck</strong>You're stuck — can't move forward, afraid to
-                start over</div>
             </div>
           </div>
         </div>
+      </section>
 
-      </div>
-    </div>
-  </section>
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section-head">
+            <div class="eyebrow">How Turais helps</div>
+            <h2>
+              We handle the technical confusion.
+              <span class="gold">You stay in control.</span>
+            </h2>
+            <p>
+              Choose the help your project needs. We explain the scope and cost
+              of paid work before you decide.
+            </p>
+          </div>
+          <div class="services-grid">
+            <article class="service">
+              <div class="service-index">
+                <span>01 / BEFORE YOU BUILD</span>
+                <div class="service-icon">
+                  <svg><use href="#file" /></svg>
+                </div>
+              </div>
+              <h3>Plan your app properly</h3>
+              <p>
+                We help turn your idea into clear requirements — what the app
+                should do, the important screens, and which features to build
+                first.
+              </p>
+            </article>
+            <article class="service">
+              <div class="service-index">
+                <span>02 / BEFORE YOU HIRE</span>
+                <div class="service-icon">
+                  <svg><use href="#users" /></svg>
+                </div>
+              </div>
+              <h3>Choose with confidence</h3>
+              <p>
+                We help you understand developer proposals, ask the right
+                questions, and agree on scope, deliverables and payment
+                milestones.
+              </p>
+            </article>
+            <article class="service">
+              <div class="service-index">
+                <span>03 / WHILE YOU BUILD</span>
+                <div class="service-icon">
+                  <svg><use href="#chart" /></svg>
+                </div>
+              </div>
+              <h3>Keep development on track</h3>
+              <p>
+                We can review progress against agreed milestones, clarify
+                changes, and help you spot concerns before they become bigger
+                problems.
+              </p>
+            </article>
+          </div>
+          <div class="service-note">
+            <div>
+              <strong>Already have a developer but things aren't moving?</strong
+              ><span
+                >We can first understand the situation and suggest which review
+                or support may be useful.</span
+              >
+            </div>
+            <a
+              class="arrow"
+              href="#enquiry"
+              aria-label="Enquire about a delayed development project"
+              >→</a
+            >
+          </div>
+        </div>
+      </section>
 
-  <!-- ═══════════════════════ OFFER ═══════════════════════ -->
-  <section class="section offer-section" id="solution">
-    <div class="section-inner">
-      <div class="offer-header reveal">
+      <section class="section reason" id="why">
+        <div class="container reason-grid">
+          <div>
+            <div class="eyebrow">Why Turais Clarity</div>
+            <h2>
+              Your idea. Your budget. <span class="gold">Your decisions.</span>
+            </h2>
+            <p>
+              We work on the founder's side of the table. Our job is to help you
+              understand the process, ask better questions and make informed
+              choices.
+            </p>
+            <a class="btn btn-white" href="#enquiry"
+              >Start with a free conversation <svg><use href="#arrow" /></svg
+            ></a>
+          </div>
+          <div class="reason-list">
+            <div class="reason-item">
+              <svg><use href="#shield" /></svg>
+              <div>
+                <strong>Independent of development agencies</strong
+                ><span
+                  >Turais is an advisory service, not the team selling you
+                  development work. We do not take commissions from
+                  agencies.</span
+                >
+              </div>
+            </div>
+            <div class="reason-item">
+              <svg><use href="#message" /></svg>
+              <div>
+                <strong>Explained in language you understand</strong
+                ><span
+                  >No need to know coding or software terms to take part in your
+                  own project decisions.</span
+                >
+              </div>
+            </div>
+            <div class="reason-item">
+              <svg><use href="#file" /></svg>
+              <div>
+                <strong>Clear deliverables before paid work</strong
+                ><span
+                  >We'll explain what we can review or prepare, the scope,
+                  timing and charges before you proceed.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="process">
+        <div class="container">
+          <div class="section-head">
+            <div class="eyebrow">Simple process</div>
+            <h2>Three steps. <span class="gold">No pressure.</span></h2>
+            <p>
+              You don't have to commit to a full consulting package to find out
+              whether Turais is the right fit.
+            </p>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">01</div>
+              <h3>Tell us about your idea</h3>
+              <p>
+                Share a few details through the form. We'll understand whether
+                you're planning something new or need help with an existing app.
+              </p>
+              <small>Enquiry · Free</small>
+            </div>
+            <div class="step">
+              <div class="step-number">02</div>
+              <h3>Have a short discussion</h3>
+              <p>
+                In a 15-minute introductory call, we'll understand your
+                situation and explain how Turais may be able to help.
+              </p>
+              <small>Introductory call · Free</small>
+            </div>
+            <div class="step">
+              <div class="step-number">03</div>
+              <h3>Choose your next step</h3>
+              <p>
+                If further work is useful, we'll share the proposed scope,
+                deliverables and pricing. You decide whether to go ahead.
+              </p>
+              <small>Detailed services · Quoted separately</small>
+            </div>
+          </div>
+          <div class="steps-disclaimer">
+            The free call is an initial discussion, not a full technical audit,
+            app blueprint or development cost estimate.
+          </div>
+        </div>
+      </section>
+
+      <section class="section preview-section">
+        <div class="container preview-grid">
+          <div>
+            <div class="eyebrow">Know what you're paying for</div>
+            <h2>
+              Not just advice.
+              <span class="gold">Useful project documents.</span>
+            </h2>
+            <p>
+              Depending on what you need, our paid services may include an app
+              feature list, screen flow, development scope, or milestone
+              checklist. We agree on the exact deliverables before work begins.
+            </p>
+            <p>
+              This helps you speak to a developer with a clearer idea of what
+              you want — instead of relying only on a verbal explanation.
+            </p>
+            <a class="btn btn-outline" href="#enquiry"
+              >Discuss your requirements <svg><use href="#arrow" /></svg
+            ></a>
+          </div>
+          <div>
+            <div class="sample-sheet">
+              <div class="sample-top">
+                <div>
+                  <strong>Example App Planning Sheet</strong
+                  ><small>Made to explain requirements clearly</small>
+                </div>
+                <div class="sample-label">SAMPLE ONLY</div>
+              </div>
+              <div class="sample-block">
+                <strong>KEY FEATURES</strong>
+                <div class="sample-line">
+                  <svg><use href="#check" /></svg> Customer registration and
+                  login
+                </div>
+                <div class="sample-line">
+                  <svg><use href="#check" /></svg> View products or services
+                </div>
+                <div class="sample-line">
+                  <svg><use href="#check" /></svg> Place an order or enquiry
+                </div>
+                <div class="sample-line">
+                  <svg><use href="#check" /></svg> Business owner dashboard
+                </div>
+              </div>
+              <div class="sample-block">
+                <strong>WHAT TO CLARIFY WITH THE DEVELOPER</strong>
+                <div class="sample-tag">
+                  <span>Delivery milestones</span><span>Feature priority</span
+                  ><span>Payment stages</span><span>Support after launch</span>
+                </div>
+              </div>
+            </div>
+            <div class="preview-caption">
+              Illustrative example, not a completed client project
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="container faq-grid">
+          <div>
+            <div class="eyebrow">Common questions</div>
+            <h2>
+              New to app development? <span class="gold">That's okay.</span>
+            </h2>
+            <p>
+              Here are a few things most first-time founders want to know before
+              contacting us.
+            </p>
+          </div>
+          <div class="faq-list">
+            <details open>
+              <summary>Do I need to know coding to talk to Turais?</summary>
+              <p>
+                No. The service is designed for people who understand their
+                business idea but need help with technical planning and
+                developer communication.
+              </p>
+            </details>
+            <details>
+              <summary>Is the first call really free?</summary>
+              <p>
+                Yes. The initial 15-minute discovery call is free. We use it to
+                understand your project and explain what kind of help may be
+                relevant. Detailed reviews, documents and ongoing support are
+                separate paid services.
+              </p>
+            </details>
+            <details>
+              <summary>Will Turais develop my app?</summary>
+              <p>
+                No. Turais Clarity is an independent advisory service. The
+                actual software is developed by the developer or agency you
+                choose.
+              </p>
+            </details>
+            <details>
+              <summary>
+                I already hired a developer. Can you still help?
+              </summary>
+              <p>
+                Yes. We can discuss your current project, including delays,
+                unclear scope or difficulty reviewing progress. Any detailed
+                assessment requires a separately agreed scope.
+              </p>
+            </details>
+            <details>
+              <summary>How much do your paid services cost?</summary>
+              <p>
+                That depends on the size of your app, its current stage and the
+                help required. We'll explain the work and share a quotation
+                before you commit.
+              </p>
+            </details>
+            <details>
+              <summary>What about privacy and my app idea?</summary>
+              <p>
+                You can describe your idea at a high level in the enquiry. If we
+                need confidential documents or sensitive project details, we can
+                discuss appropriate confidentiality terms before sharing them.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Can you guarantee a launch date or fixed development budget?
+              </summary>
+              <p>
+                No independent advisor can guarantee how a third-party
+                development team will perform. Our role is to help make scope,
+                expectations and progress easier to review so you can make
+                better decisions.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-section" id="enquiry">
+        <div class="container contact-grid">
+          <div class="contact-copy">
+            <div class="eyebrow">Start here</div>
+            <h2>
+              Have an app idea? <span class="gold">Let's talk first.</span>
+            </h2>
+            <p>
+              Tell us a little about your project. We'll start with a free
+              15-minute discussion to understand your needs and explain the next
+              possible steps.
+            </p>
+            <div class="contact-steps">
+              <span
+                ><svg><use href="#check" /></svg> Free introductory
+                discussion</span
+              ><span
+                ><svg><use href="#check" /></svg> Talk in simple English about
+                your business</span
+              ><span
+                ><svg><use href="#check" /></svg> Paid work only after you agree
+                to a quotation</span
+              >
+            </div>
+          </div>
+          <div class="enquiry-card">
+            <h3>Request a free discussion</h3>
+            <p>Just a few details. No technical knowledge needed.</p>
+            <form id="enquiryForm" novalidate>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="fullName">Your name *</label
+                  ><input
+                    id="fullName"
+                    name="name"
+                    autocomplete="name"
+                    placeholder="Your full name"
+                    maxlength="90"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="phoneNumber">WhatsApp number *</label
+                  ><input
+                    id="phoneNumber"
+                    name="phone"
+                    type="tel"
+                    autocomplete="tel-national"
+                    inputmode="numeric"
+                    placeholder="10-digit mobile number"
+                    pattern="[0-9]{10}"
+                    maxlength="10"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="field">
+                <label for="projectStage">Your current situation *</label
+                ><select id="projectStage" name="stage" required>
+                  <option value="" selected disabled>Choose one</option>
+                  <option value="I have an app idea">I have an app idea</option>
+                  <option value="I am comparing developers">
+                    I'm comparing developers
+                  </option>
+                  <option value="My app is in development">
+                    My app is already in development
+                  </option>
+                  <option value="My project is delayed or stuck">
+                    My project is delayed or stuck
+                  </option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="budget"
+                  >Approximate project budget
+                  <span class="optional">(optional)</span></label
+                ><select id="budget" name="budget">
+                  <option value="Not decided yet">Not decided yet</option>
+                  <option value="Below ₹1 lakh">Below ₹1 lakh</option>
+                  <option value="₹1–3 lakhs">₹1–3 lakhs</option>
+                  <option value="₹3–10 lakhs">₹3–10 lakhs</option>
+                  <option value="Above ₹10 lakhs">Above ₹10 lakhs</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="projectDetails"
+                  >Tell us briefly about your project
+                  <span class="optional">(optional)</span></label
+                ><textarea
+                  id="projectDetails"
+                  name="details"
+                  maxlength="800"
+                  placeholder="Example: I want an app for my business, but I don't know how to start."
+                ></textarea>
+              </div>
+              <button id="submitButton" class="btn btn-gold" type="submit">
+                Prepare my enquiry <svg><use href="#arrow" /></svg>
+              </button>
+              <p class="fineprint">
+                By sending your enquiry, you agree to be contacted about this
+                request. Please don't share passwords or confidential documents
+                here.
+              </p>
+              <div
+                class="form-message"
+                id="formMessage"
+                role="status"
+                aria-live="polite"
+              ></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-inner">
         <div>
-          <div class="section-eyebrow">The starting point</div>
-          <h2 class="s-title">Start With a <em>₹499 Clarity Call</em></h2>
-          <p class="s-sub">One focused session to cut through the confusion. This is not a sales call — it is a working
-            session.</p>
+          <a href="#top" class="brand">Turais Solutions<span>.</span></a>
+          <p>Clarity for the people building what's next.</p>
         </div>
-        <div>
-          <div class="offer-feature-label">What makes us different</div>
-          <div class="offer-features">
-            <span class="feat-tag"><span class="dot"></span>100% on your side</span>
-            <span class="feat-tag"><span class="dot"></span>Zero dev commissions</span>
-            <span class="feat-tag"><span class="dot"></span>NDA protected</span>
-            <span class="feat-tag"><span class="dot"></span>Milestone accountability</span>
-            <span class="feat-tag"><span class="dot"></span>End-to-end oversight</span>
-            <span class="feat-tag"><span class="dot"></span>Engineering expertise</span>
-          </div>
+        <div class="footer-links">
+          <a href="#who">Who we help</a><a href="#services">Services</a
+          ><a href="#faq">FAQs</a><a href="#enquiry">Enquire</a>
         </div>
       </div>
-
-      <!-- <div class="offer-cards reveal">
-      <div class="offer-card">
-        <div class="oc-num">01</div>
-        <div class="oc-icon">🔒</div>
-        <div class="oc-title">NDA Before Anything</div>
-        <div class="oc-desc">Before you share a single word about your idea, we sign a legally binding Non-Disclosure Agreement. Your intellectual property is 100% yours.</div>
-      </div>
-      <div class="offer-card">
-        <div class="oc-num">02</div>
-        <div class="oc-icon">🗺️</div>
-        <div class="oc-title">Complete Blueprint</div>
-        <div class="oc-desc">We build a full engineering blueprint — SRS documents, wireframes, flowcharts, and prototypes — before a rupee is spent on development.</div>
-      </div>
-      <div class="offer-card">
-        <div class="oc-num">03</div>
-        <div class="oc-icon">👁️</div>
-        <div class="oc-title">Execution Oversight</div>
-        <div class="oc-desc">Daily and weekly tracking, direct issue resolution with your team, code verification, and feature validation until your product ships.</div>
-      </div>
-    </div> -->
-
-      <div class="offer-big reveal" id="offer">
-        <div class="ob-left">
-          <span class="ob-tag">The ₹499 Clarity Call</span>
-          <div class="ob-title">What You Get in the Call</div>
-          <div class="ob-sub">60–90 minutes · Real work · Real clarity</div>
-          <div class="ob-items">
-            <div class="ob-item">
-              <div class="ob-check">✓</div>
-              <div class="ob-item-text">We understand your idea or current project situation — no jargon, plain
-                conversation</div>
-            </div>
-            <div class="ob-item">
-              <div class="ob-check">✓</div>
-              <div class="ob-item-text">We identify exactly where the breakdown is happening in your development</div>
-            </div>
-            <div class="ob-item">
-              <div class="ob-check">✓</div>
-              <div class="ob-item-text">We walk you through what proper documentation and milestone planning looks like
-              </div>
-            </div>
-            <div class="ob-item">
-              <div class="ob-check">✓</div>
-              <div class="ob-item-text">You leave knowing your next three steps — clearly, with no confusion</div>
-            </div>
-            <div class="ob-item">
-              <div class="ob-check">✓</div>
-              <div class="ob-item-text">Basic guidance on how to evaluate and select the right development agency</div>
-            </div>
-            <div class="ob-item">
-              <div class="ob-check">✓</div>
-              <div class="ob-item-text">NDA signed before the call — your idea is 100% protected</div>
-            </div>
-          </div>
-          <div class="ob-note">You pay ₹499 because your time is valuable — and so is ours. This fee ensures only
-            serious founders make it to the call. No tyre-kickers. No time wasters.</div>
-        </div>
-        <div class="ob-right">
-          <div class="ob-price-label">One-time · Clarity Call</div>
-          <div class="ob-price">₹499</div>
-          <div class="ob-price-note">Normally worth ₹5,000.<br>First 10 founders at this price.</div>
-          <!-- REPLACE href="#" WITH YOUR PAYMENT / CALENDLY LINK -->
-          <!-- <a class="ob-cta" href="/payment">Yes, I Want Clarity — Book Now →</a> -->
-           <a class="ob-cta">Yes, I Want Clarity — Book Now →</a>
-          <div class="ob-scarcity"><span class="blink">●</span> Limited to 10 founders this month at this price</div>
-        </div>
-      </div>
+    </footer>
+    <div class="mobile-sticky">
+      <a href="#enquiry">Request a free 15-minute call →</a>
     </div>
-  </section>
-
-  <!-- ═══════════════════════ PROCESS ═══════════════════════ -->
-  <section class="section process-section" id="process">
-    <div class="section-inner">
-      <div class="reveal">
-        <div class="section-eyebrow">How it works</div>
-        <h2 class="s-title">From First Call to <em>Final Launch</em></h2>
-        <p class="s-sub">Every step is designed to protect your money, your time, and your idea.</p>
-      </div>
-      <div class="process-timeline">
-        <div class="proc-item reveal">
-          <div class="proc-dot">01</div>
-          <div class="proc-body">
-            <span class="proc-tag">Before everything</span>
-            <div class="proc-title">NDA First — Your Idea Is Protected</div>
-            <div class="proc-desc">Before you share even a word about your idea, we sign a Non-Disclosure Agreement.
-              Your intellectual property remains 100% yours. Trust is the foundation of everything we do.</div>
-          </div>
-        </div>
-        <div class="proc-item reveal">
-          <div class="proc-dot">02</div>
-          <div class="proc-body">
-            <span class="proc-tag">Blueprint before code</span>
-            <div class="proc-title">Full Architecture — Clarity Before a Rupee Is Spent</div>
-            <div class="proc-desc">We transform your vision into a complete engineering blueprint. You see the full
-              product in front of you before spending a rupee on development.</div>
-            <div class="proc-pills">
-              <span class="proc-pill">SRS Document</span>
-              <span class="proc-pill">Flowcharts &amp; Logic Diagrams</span>
-              <span class="proc-pill">Wireframes &amp; Screen Flows</span>
-              <span class="proc-pill">UI Prototype</span>
-            </div>
-          </div>
-        </div>
-        <div class="proc-item reveal">
-          <div class="proc-dot">03</div>
-          <div class="proc-body">
-            <span class="proc-tag">The handshake</span>
-            <div class="proc-title">Alignment Meeting — You, Us, and the Developer</div>
-            <div class="proc-desc">We sit in the room with you and the agency. Milestones defined. Deliverables fixed.
-              Payment tied to progress. Delays come with penalties. No vagueness. No confusion. Only accountability.
-            </div>
-          </div>
-        </div>
-        <div class="proc-item reveal">
-          <div class="proc-dot">04</div>
-          <div class="proc-body">
-            <span class="proc-tag">Until you launch</span>
-            <div class="proc-title">Execution Oversight — We Watch Every Step</div>
-            <div class="proc-desc">Daily and weekly development tracking. Issue solving directly with the team. Code
-              flow verification and feature validation. We stay until the product is live, stable, and working.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════ AUDIENCE ═══════════════════════ -->
-  <section class="section audience-section" id="audience">
-    <div class="section-inner">
-      <div class="reveal">
-        <div class="section-eyebrow">Who this is for</div>
-        <h2 class="s-title">We Work With <em>Two Types</em> of Founders</h2>
-      </div>
-      <div class="audience-grid">
-        <div class="aud-card reveal">
-          <div class="aud-card-top">
-            <span class="aud-type">Type 01</span>
-            <div class="aud-title">You Have an Idea and Haven't Started Yet</div>
-          </div>
-          <div class="aud-card-body">
-            <p class="aud-desc">You want to build it right the first time. No wasted money. No mid-project chaos. We
-              document your vision completely before you approach a single developer — so there is nothing lost in
-              translation.</p>
-            <div class="aud-note">Start here: ₹499 Clarity Call → ₹5,000 Full Blueprint</div>
-          </div>
-        </div>
-        <div class="aud-card reveal-r">
-          <div class="aud-card-top">
-            <span class="aud-type">Type 02</span>
-            <div class="aud-title">Your Project Is Already Stuck or Delayed</div>
-          </div>
-          <div class="aud-card-body">
-            <p class="aud-desc">Development started, but something broke down. Timeline crossed. Budget stretched.
-              Developers not responding. We step in, audit the situation, stop the bleeding, and create a clear recovery
-              plan.</p>
-            <div class="aud-note">Start here: ₹499 Rescue Audit Call</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════ WHY ═══════════════════════ -->
-  <section class="section why-section">
-    <div class="section-inner">
-      <div class="why-intro-grid">
-        <div class="reveal">
-          <div class="section-eyebrow">Why Turais</div>
-          <h2 class="s-title">We Work for <em>You</em> — Not the Development Agency</h2>
-          <p class="s-sub">We are not a development agency. We don't write code. We don't take commissions from
-            developers. Our only job is to make sure your money builds exactly what you intended.</p>
-        </div>
-        <div class="why-proof reveal-r">
-          <div class="wp-item">
-            <!-- <div class="wp-icon">🛡️</div> -->
-            <div class="wp-icon">
-              <img src="9_years_of_technical_expertise.png" alt="9+ Years of Technical Expertise" class="wp-icon">
-            </div>
-            <div class="wp-body">
-              <div class="wp-title">9+ Years of Technical Expertise</div>
-              <div class="wp-desc">Deep understanding of code, servers, security, and systems. We understand what
-                developers say — and what they're not saying.</div>
-            </div>
-          </div>
-          <div class="wp-item">
-            <!-- <div class="wp-icon">⚖️</div> -->
-            <div class="wp-icon">
-              <img src="zero_commissions_from_agencies.png" alt="0 Commissions from Agencies" class="wp-icon">
-            </div>
-            <div class="wp-body">
-              <div class="wp-title">0 Commissions from Agencies</div>
-              <div class="wp-desc">We filter agency promises brutally. Our loyalty is to you. We remove unrealistic
-                commitments before they become expensive mistakes.</div>
-            </div>
-          </div>
-          <div class="wp-item">
-            <!-- <div class="wp-icon">📋</div> -->
-            <div class="wp-icon">
-              <img src="100_milestone_based_transparency.png" alt="100% Milestone-Based Transparency" class="wp-icon">
-            </div>
-            <div class="wp-body">
-              <div class="wp-title">100% Milestone-Based Transparency</div>
-              <div class="wp-desc">You pay for output, not time. Every rupee is tied to a deliverable. No vague billing.
-                No scope creep. No surprises.</div>
-            </div>
-          </div>
-        </div>
-        <!-- </div>
-      <div class="why-stats reveal">
-        <div class="ws-card">
-          <div class="ws-num">9<em>+</em></div>
-          <div class="ws-label">Years of deep technical and product expertise</div>
-        </div>
-        <div class="ws-card">
-          <div class="ws-num">₹<em>0</em></div>
-          <div class="ws-label">Commissions ever taken from any development agency</div>
-        </div>
-        <div class="ws-card">
-          <div class="ws-num">100<em>%</em></div>
-          <div class="ws-label">Loyalty to you — always, on every decision</div>
-        </div> -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════ COMPARE ═══════════════════════ -->
-  <section class="section compare-section" id="compare">
-    <div class="section-inner reveal">
-      <div class="section-eyebrow">The logic check</div>
-      <h2 class="s-title">Where Agencies Fail, <em>We Stand Strong</em></h2>
-      <div class="compare-wrap">
-        <table class="cmp-table">
-          <thead>
-            <tr>
-              <th>Aspect</th>
-              <th>Typical Agency</th>
-              <th>Turais Method</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Loyalty</td>
-              <td>To the agency (their profit)</td>
-              <td>To YOU — always</td>
-            </tr>
-            <tr>
-              <td>Objective</td>
-              <td>Maximize billable hours</td>
-              <td>Efficient, fast delivery</td>
-            </tr>
-            <tr>
-              <td>Communication</td>
-              <td>Says yes to everything</td>
-              <td>Honest feasibility check</td>
-            </tr>
-            <tr>
-              <td>Documentation</td>
-              <td>Basic or none</td>
-              <td>Full engineering blueprint</td>
-            </tr>
-            <tr>
-              <td>Oversight</td>
-              <td>None after contract signed</td>
-              <td>Daily/weekly monitoring</td>
-            </tr>
-            <tr>
-              <td>Result</td>
-              <td>Delays, budget overruns</td>
-              <td>On-time, on-budget delivery</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════ FINAL CTA ═══════════════════════ -->
-  <section class="final-cta">
-    <div class="final-inner reveal">
-      <div class="final-eyebrow">⚡ Limited availability</div>
-      <h2 class="final-h2">Stop Letting Vagueness <em>Cost You Lakhs</em></h2>
-      <p class="final-sub">Every week without a clear plan is a week your developer fills the gaps with assumptions.
-        Assumptions cost money. ₹499 gets you clarity. ₹5,000 gets you a complete blueprint your developer cannot
-        misinterpret.</p>
-      <div class="final-actions">
-        <!-- REPLACE href="#" WITH YOUR PAYMENT / CALENDLY LINK -->
-        <!-- <a class="btn-gold" href="/payment">Book My ₹499 Clarity Call →</a> -->
-         <a class="btn-gold">Book My ₹499 Clarity Call →</a>
-        <a class="btn-ghost-white" href="#process">See the Full Process</a>
-      </div>
-      <div class="final-note">⚡ Limited to 10 founders this month at this price. After that, full rate applies.</div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
-  <footer>
-    <div class="f-logo">Turais Solutions<span>.</span></div>
-    <div class="f-copy">© 2025 Turais Solutions. All rights reserved.</div>
-  </footer>
-
-  <script>
-    // Nav shadow on scroll
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
-
-    // Scroll reveal
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('up') });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal, .reveal-r').forEach((el, i) => {
-      el.style.transitionDelay = (i % 4) * 0.08 + 's';
-      obs.observe(el);
-    });
-  </script>
-</body>
-
+    <script>
+      // PRODUCTION SETUP: Insert your verified business WhatsApp number (India: 91 + 10 digits, no plus or spaces).
+      // Example format only: '91XXXXXXXXXX'. Leave blank until verified.
+      const BUSINESS_WHATSAPP_NUMBER = "";
+      const navBtn = document.getElementById("menuButton"),
+        navLinks = document.getElementById("navLinks");
+      navBtn.addEventListener("click", () => {
+        const expanded = navBtn.getAttribute("aria-expanded") === "true";
+        navBtn.setAttribute("aria-expanded", String(!expanded));
+        navLinks.classList.toggle("open", !expanded);
+        navBtn.setAttribute(
+          "aria-label",
+          expanded ? "Open menu" : "Close menu",
+        );
+      });
+      navLinks.querySelectorAll("a").forEach((link) =>
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("open");
+          navBtn.setAttribute("aria-expanded", "false");
+          navBtn.setAttribute("aria-label", "Open menu");
+        }),
+      );
+      const form = document.getElementById("enquiryForm"),
+        message = document.getElementById("formMessage"),
+        submitButton = document.getElementById("submitButton");
+      if (/^\d{12,15}$/.test(BUSINESS_WHATSAPP_NUMBER))
+        submitButton.innerHTML = "Continue on WhatsApp &rarr;";
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const fullName = document.getElementById("fullName"),
+          phone = document.getElementById("phoneNumber"),
+          stage = document.getElementById("projectStage");
+        const name = fullName.value.trim();
+        const digits = phone.value.replace(/\D/g, "");
+        if (!name) {
+          fullName.setCustomValidity("Please enter your name");
+          fullName.reportValidity();
+          fullName.setCustomValidity("");
+          return;
+        }
+        if (digits.length !== 10) {
+          phone.setCustomValidity("Please enter a 10-digit mobile number");
+          phone.reportValidity();
+          phone.setCustomValidity("");
+          return;
+        }
+        if (!stage.value) {
+          stage.setCustomValidity("Please choose your project stage");
+          stage.reportValidity();
+          stage.setCustomValidity("");
+          return;
+        }
+        const budget = document.getElementById("budget").value;
+        const details = document.getElementById("projectDetails").value.trim();
+        const enquiry = `Hello Turais Clarity, I'd like to request a free 15-minute discussion.\n\nName: ${name}\nWhatsApp: +91 ${digits}\nStage: ${stage.value}\nEstimated budget: ${budget}\nProject details: ${details || "Will explain during the call."}`;
+        message.classList.add("visible");
+        if (/^\d{12,15}$/.test(BUSINESS_WHATSAPP_NUMBER)) {
+          const url = `https://wa.me/${BUSINESS_WHATSAPP_NUMBER}?text=${encodeURIComponent(enquiry)}`;
+          message.textContent =
+            "WhatsApp is opening with your prepared message. Please press Send in WhatsApp to complete your enquiry.";
+          window.open(url, "_blank", "noopener,noreferrer");
+        } else {
+          message.replaceChildren();
+          const title = document.createElement("strong");
+          title.textContent = "Your enquiry is ready (demo mode)";
+          const desc = document.createElement("p");
+          desc.textContent =
+            "This preview does not send enquiries yet. Copy the message below. To make the form live, configure the Turais business WhatsApp number in the HTML.";
+          const area = document.createElement("textarea");
+          area.readOnly = true;
+          area.value = enquiry;
+          area.setAttribute("aria-label", "Prepared enquiry message");
+          const copy = document.createElement("button");
+          copy.type = "button";
+          copy.className = "copy-btn";
+          copy.textContent = "Copy enquiry";
+          copy.addEventListener("click", async () => {
+            try {
+              await navigator.clipboard.writeText(enquiry);
+              copy.textContent = "Copied!";
+            } catch (err) {
+              area.select();
+              document.execCommand("copy");
+              copy.textContent = "Copied!";
+            }
+          });
+          message.append(title, desc, area, copy);
+          message.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      });
+    </script>
+  </body>
 </html>
