@@ -8,6 +8,10 @@
       name="description"
       content="Planning to build an app in India? Turais Clarity helps non-technical founders plan their app, compare developers and stay on top of delivery. Start with a free 15-minute discussion."
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
     <title>Turais Clarity | Independent App Guidance for Indian Founders</title>
 
     <!-- Meta Pixel Code -->
@@ -2283,7 +2287,7 @@
                   placeholder="Example: I want an app for my business, but I don't know how to start."
                 ></textarea>
               </div>
-              <button id="submitButton" class="btn btn-gold" type="submit">
+              <button id="submitButton" class="btn btn-navy" type="submit">
                 Prepare my enquiry <svg><use href="#arrow" /></svg>
               </button>
               <p class="fineprint">
@@ -2342,8 +2346,14 @@
       const form = document.getElementById("enquiryForm"),
         message = document.getElementById("formMessage"),
         submitButton = document.getElementById("submitButton");
-      if (/^\d{12,15}$/.test(BUSINESS_WHATSAPP_NUMBER))
-        submitButton.innerHTML = "Continue on WhatsApp &rarr;";
+
+      if (/^\d{12,15}$/.test(BUSINESS_WHATSAPP_NUMBER)) {
+        submitButton.classList.add("btn-navy");
+        submitButton.innerHTML = `
+          <i class="fa-brands fa-whatsapp"></i>
+          Submit
+        `;
+      }
       form.addEventListener("submit", (event) => {
         event.preventDefault();
         const fullName = document.getElementById("fullName"),
