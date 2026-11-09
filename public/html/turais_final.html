@@ -14,7 +14,6 @@
     />
     <title>Turais Clarity | Independent App Guidance for Indian Founders</title>
 
-
     <style>
       :root {
         --navy: #17294a;
@@ -2204,8 +2203,8 @@
                   />
                 </div>
                 <div class="field">
-                  <label for="phoneNumber">WhatsApp number *</label
-                  ><input
+                  <label for="phoneNumber">WhatsApp number *</label>
+                  <input
                     id="phoneNumber"
                     name="phone"
                     type="tel"
@@ -2292,6 +2291,12 @@
       <a href="#enquiry">Request a free 15-minute call →</a>
     </div>
     <script>
+      // phone number validation
+      const phoneInput = document.getElementById("phoneNumber");
+
+      phoneInput.addEventListener("input", () => {
+        phoneInput.value = phoneInput.value.replace(/[^0-9]/g, "").slice(0, 10);
+      });
       // PRODUCTION SETUP: Insert your verified business WhatsApp number (India: 91 + 10 digits, no plus or spaces).
       // Example format only: '91XXXXXXXXXX'. Leave blank until verified.
       const BUSINESS_WHATSAPP_NUMBER = "918122731042";
